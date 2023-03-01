@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment1">
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.jantzen.example.gamerelease.fragment_uebersicht"
+        android:label="fragment_fragment1"
+        tools:layout="@layout/fragment_uebersicht" />
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.jantzen.example.gamerelease.fragment_pllattform"
+        android:label="fragment_fragment2"
+        tools:layout="@layout/fragment_plattform" />
+    <fragment
+        android:id="@+id/fragment_Kategorie"
+        android:name="com.jantzen.example.gamerelease.Fragment_Kategorie"
+        android:label="fragment__kategorie"
+        tools:layout="@layout/fragment__kategorie" />
+</navigation>
