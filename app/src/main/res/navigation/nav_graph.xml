@@ -20,4 +20,19 @@
         android:name="com.jantzen.example.gamerelease.Fragment_Kategorie"
         android:label="fragment__kategorie"
         tools:layout="@layout/fragment__kategorie" />
+    <fragment
+        android:id="@+id/fragment_Splash"
+        android:name="com.jantzen.example.gamerelease.Fragment_Splash"
+        android:label="fragment__splash"
+        tools:layout="@layout/fragment__splash" />
+    <fragment
+        android:id="@+id/fragment_game"
+        android:name="com.jantzen.example.gamerelease.Fragment_game"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" />
+    <fragment
+        android:id="@+id/fragment_favorite"
+        android:name="com.jantzen.example.gamerelease.Fragment_favorite"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>
