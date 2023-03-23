@@ -6,48 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Fragment_favorite">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="8dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/dead_island2" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:textColor="#000000"
-            tools:text="Dead Island" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="20dp"
-            android:textColor="#000000"
-            tools:text="21.04.2023" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="350dp"
-            android:layout_marginTop="100dp"
-            android:backgroundTint="#00FFF2F2"
-            android:src="@drawable/baseline_star_border_24" />
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_favorite" />
 </androidx.constraintlayout.widget.ConstraintLayout>
