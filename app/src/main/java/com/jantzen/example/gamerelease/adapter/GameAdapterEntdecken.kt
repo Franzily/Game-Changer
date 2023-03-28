@@ -6,20 +6,21 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.MaterialToolbar
 import com.jantzen.example.gamerelease.R
 import com.jantzen.example.gamerelease.data.model.Game
 
-class GameAdapter() : RecyclerView.Adapter<GameAdapter.ItemViewHolder>(){
+class GameAdapterEntdecken : RecyclerView.Adapter<GameAdapterEntdecken.ItemViewHolder>(){
 
     private var dataset = listOf<Game>()
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
 
         val image: ImageView = view.findViewById(R.id.game_image)
-        val name: TextView = view.findViewById(R.id.game_name_uebersicht)
-        val date: TextView = view.findViewById(R.id.game_date_uebersicht)
-        val description: TextView = view.findViewById(R.id.game_description_text)
-        val publisher: TextView = view.findViewById(R.id.game_publisher)
+        val name: TextView = view.findViewById(R.id.game_name_entdecken)
+        val date: TextView = view.findViewById(R.id.game_date_entdecken)
+        val toolbar: MaterialToolbar = view.findViewById(R.id.materialToolbar_entdecken)
+
 
     }
 
@@ -33,8 +34,6 @@ class GameAdapter() : RecyclerView.Adapter<GameAdapter.ItemViewHolder>(){
         val game = dataset[position]
         holder.name.text = game.name
         holder.date.text = game.releaseDate
-        holder.description.text = game.description
-        holder.publisher.text = game.publisher
     }
 
     override fun getItemCount(): Int {

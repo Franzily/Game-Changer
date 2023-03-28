@@ -38,7 +38,7 @@
             tools:text="21.04.2023" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/imageButton_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="350dp"

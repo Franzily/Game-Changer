@@ -8,5 +8,6 @@ data class Game (val cover: Int,
                  val genres: String,
                  val plattforms: String,
                  val categorie: String,
-                 val publisher: String
+                 val publisher: String,
+                 val fav: Boolean
                  )
