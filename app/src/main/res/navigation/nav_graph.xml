@@ -9,27 +9,50 @@
         android:id="@+id/fragment1"
         android:name="com.jantzen.example.gamerelease.fragment_uebersicht"
         android:label="fragment_fragment1"
-        tools:layout="@layout/fragment_uebersicht" />
+        tools:layout="@layout/fragment_uebersicht" >
+        <action
+            android:id="@+id/action_fragment1_to_fragment_game"
+            app:destination="@id/fragment_game" />
+        <action
+            android:id="@+id/action_fragment1_to_fragment_favorite"
+            app:destination="@id/fragment_favorite" />
+    </fragment>
     <fragment
         android:id="@+id/fragment2"
         android:name="com.jantzen.example.gamerelease.fragment_pllattform"
         android:label="fragment_fragment2"
-        tools:layout="@layout/fragment_plattform" />
+        tools:layout="@layout/fragment_plattform" >
+        <action
+            android:id="@+id/action_fragment2_to_fragment_Kategorie"
+            app:destination="@id/fragment_Kategorie" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_Kategorie"
         android:name="com.jantzen.example.gamerelease.Fragment_Kategorie"
         android:label="fragment__kategorie"
-        tools:layout="@layout/fragment__kategorie" />
+        tools:layout="@layout/fragment__kategorie" >
+        <action
+            android:id="@+id/action_fragment_Kategorie_to_fragment1"
+            app:destination="@id/fragment1" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_Splash"
         android:name="com.jantzen.example.gamerelease.Fragment_Splash"
         android:label="fragment__splash"
-        tools:layout="@layout/fragment__splash" />
+        tools:layout="@layout/fragment__splash" >
+        <action
+            android:id="@+id/action_fragment_Splash_to_fragment2"
+            app:destination="@id/fragment2" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_game"
         android:name="com.jantzen.example.gamerelease.Fragment_game"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game" >
+        <argument
+            android:name="gameid"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_favorite"
         android:name="com.jantzen.example.gamerelease.Fragment_favorite"

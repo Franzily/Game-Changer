@@ -21,6 +21,8 @@ class GameAdapterFavoriten : RecyclerView.Adapter<GameAdapterFavoriten.ItemViewH
         val date: TextView = view.findViewById(R.id.game_date_favorite)
         val fav: ImageButton = view.findViewById(R.id.imageButton_fav)
         val toolbar: MaterialToolbar = view.findViewById(R.id.materialToolbar_fav)
+        val likeButton: ImageButton = view.findViewById(R.id.imageButton_fav)
+
 
     }
 
@@ -39,4 +41,6 @@ class GameAdapterFavoriten : RecyclerView.Adapter<GameAdapterFavoriten.ItemViewH
     override fun getItemCount(): Int {
         return dataset.size
     }
+
+    
 }

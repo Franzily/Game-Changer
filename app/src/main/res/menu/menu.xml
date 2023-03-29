@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/icon_entdecken"
+        android:title="Entdecken"
+        android:icon="@drawable/__2"/>
+
+    <item
+        android:id="@+id/icon_home"
+        android:title="Übersicht"
+        android:icon="@drawable/baseline_home_24"/>
+
+    <item
+        android:id="@+id/icon_fav"
+        android:title="Favoriten"
+        android:icon="@drawable/like"/>
+
+
+
+</menu>

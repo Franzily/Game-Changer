@@ -8,8 +8,8 @@ import com.jantzen.example.gamerelease.data.model.Game
 class MainViewModel: ViewModel() {
 
 
-    private val _games : MutableLiveData<List<Game>>()
-    val games : LiveData<Game>
+    private val _games = MutableLiveData<List<Game>>()
+    val games : LiveData<List<Game>>
     get() = _games
 
     private val _favoriteGameList = MutableLiveData<List<Game>>(emptyList())
