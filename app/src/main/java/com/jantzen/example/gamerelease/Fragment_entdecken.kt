@@ -14,10 +14,10 @@ class Fragment_entdecken : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val name = requireArguments().getString("name")
+        //val name = requireArguments().getString("name")
 
         val adapter = GameAdapterFavoriten()
-        binding.materialToolbarEntdecken.title = name
+        //binding.materialToolbarEntdecken.title = name
 
     }
 

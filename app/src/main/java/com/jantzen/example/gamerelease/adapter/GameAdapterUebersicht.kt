@@ -34,7 +34,7 @@ class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ItemV
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val game = dataset[position]
         holder.name.text = game.name
-        holder.date.text = game.releaseDate
+        holder.date.text = game.date
         holder.description.text = game.description
         holder.publisher.text = game.publisher
     }

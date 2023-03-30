@@ -33,7 +33,7 @@ class GameAdapterEntdecken : RecyclerView.Adapter<GameAdapterEntdecken.ItemViewH
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val game = dataset[position]
         holder.name.text = game.name
-        holder.date.text = game.releaseDate
+        holder.date.text = game.date
     }
 
     override fun getItemCount(): Int {

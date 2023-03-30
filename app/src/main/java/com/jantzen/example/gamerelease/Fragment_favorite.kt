@@ -15,10 +15,10 @@ class Fragment_favorite : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val name = requireArguments().getString("name")
+        //val name = requireArguments().getString("name")
 
         val adapter = GameAdapterFavoriten()
-        binding.materialToolbarFav.title = name
+       // binding.materialToolbarFav.title = name
 
 
     }
