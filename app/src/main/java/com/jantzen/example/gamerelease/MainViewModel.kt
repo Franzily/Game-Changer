@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jantzen.example.gamerelease.data.Repository
 import com.jantzen.example.gamerelease.data.model.Game
+import com.jantzen.example.gamerelease.data.model.ResponseToken
 import com.jantzen.example.gamerelease.data.remote.TokenAPI
 import kotlinx.coroutines.launch
 
@@ -15,9 +16,17 @@ class MainViewModel: ViewModel() {
 
     var repo = Repository(TokenAPI)
 
+    private val _token = MutableLiveData<ResponseToken>()
+    val token : LiveData<ResponseToken>
+    get() = _token
+
+
+
     init {
         Log.d(TAG, "init")
-        viewModelScope.launch { repo.getToken() }
+        viewModelScope.launch {
+          _token.value = repo.getToken()
+        }
     }
 
 
@@ -38,4 +47,6 @@ class MainViewModel: ViewModel() {
         val newList = currentList + game
         _favoriteGameList.value = newList
     }
+
+
 }

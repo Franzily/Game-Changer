@@ -6,13 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Fragment_game">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_image"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
 
         <ImageView
             android:id="@+id/game_image"
@@ -50,12 +58,13 @@
         tools:text="21.04.2023" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView13"
         android:layout_width="100dp"
         android:layout_height="20dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_color"
         app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/game_name_text" />
 
@@ -64,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:text="Beschreibung"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -71,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="392dp" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView13" />
 
     <TextView
         android:id="@+id/game_description_text"
@@ -127,12 +137,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/game_description_head"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView13"
         tools:text="Publisher" />
+
+    <ImageButton
+        android:id="@+id/imageButton_menu_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/menu"
+        app:layout_constraintBottom_toBottomOf="@+id/materialToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar" />
+
+    <ImageButton
+        android:id="@+id/imageButton_search_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/search"
+        app:layout_constraintBottom_toBottomOf="@+id/materialToolbar"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton_menu_game"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar" />
+
+    <ImageButton
+        android:id="@+id/imageButton_back_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/back_button"
+        app:layout_constraintBottom_toBottomOf="@+id/materialToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,9 +7,10 @@
     tools:context=".Fragment_favorite">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,5 +29,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Favoriten"
         app:titleCentered="true" />
+
+    <ImageButton
+        android:id="@+id/imageButton_menu_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/menu"
+        app:layout_constraintBottom_toBottomOf="@+id/materialToolbar_fav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar_fav" />
+
+    <ImageButton
+        android:id="@+id/imageButton_search_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/search"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton_menu_fav"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar_fav" />
+
+    <ImageButton
+        android:id="@+id/imageButton_back_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/back_button"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar_fav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.jantzen.example.gamerelease.adapter.GameAdapterFavoriten
 import com.jantzen.example.gamerelease.databinding.FragmentEntdeckenBinding
 
@@ -18,6 +19,10 @@ class Fragment_entdecken : Fragment() {
 
         val adapter = GameAdapterFavoriten()
         //binding.materialToolbarEntdecken.title = name
+        Navigation.findNavController(view).navigateUp()
+
+        //binding.materialToolbarEntdecken.
+
 
     }
 

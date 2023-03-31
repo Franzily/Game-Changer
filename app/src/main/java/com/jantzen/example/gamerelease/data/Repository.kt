@@ -7,11 +7,12 @@ import com.jantzen.example.gamerelease.data.remote.TokenAPI
 
 class Repository (private val tApi: TokenAPI){
 
-    lateinit var token: ResponseToken
 
-    suspend fun getToken(){
+
+    suspend fun getToken():ResponseToken{
         Log.d(TAG, "Api anfrage")
-        token = tApi.retrofitService.getToken()
-        Log.d(TAG, "${token.access_token}")
+        return tApi.retrofitService.getToken()
+       // Log.d(TAG, "${token.access_token}")
+
     }
 }

@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.jantzen.example.gamerelease.databinding.FragmentFavoriteBinding
+import com.jantzen.example.gamerelease.databinding.FragmentGameBinding
 
 
 class Fragment_game : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentGameBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Navigation.findNavController(view).navigateUp()
     }
 
     override fun onCreateView(

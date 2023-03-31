@@ -65,4 +65,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Entdecken"
         app:titleCentered="true" />
+
+    <ImageButton
+        android:id="@+id/imageButton_menu_entdecken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/menu"
+        app:layout_constraintBottom_toBottomOf="@+id/materialToolbar_entdecken"
+        app:layout_constraintEnd_toEndOf="@+id/materialToolbar_entdecken"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton_search_entdecken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/search"
+        app:layout_constraintBottom_toBottomOf="@+id/materialToolbar_entdecken"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton_menu_entdecken"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backbutton_entdecken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/back_button"
+        app:layout_constraintBottom_toBottomOf="@+id/materialToolbar_entdecken"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar_entdecken" />
 </androidx.constraintlayout.widget.ConstraintLayout>
