@@ -7,18 +7,27 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jantzen.example.gamerelease.data.Repository
+import com.jantzen.example.gamerelease.data.Repository_Release
 import com.jantzen.example.gamerelease.data.model.Game
+import com.jantzen.example.gamerelease.data.model.Game_Release
 import com.jantzen.example.gamerelease.data.model.ResponseToken
+import com.jantzen.example.gamerelease.data.remote.Game_ReleaseAPI
 import com.jantzen.example.gamerelease.data.remote.TokenAPI
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
 
     var repo = Repository(TokenAPI)
+    var repoRelease = Repository_Release(Game_ReleaseAPI)
 
     private val _token = MutableLiveData<ResponseToken>()
     val token : LiveData<ResponseToken>
     get() = _token
+
+
+    lateinit var release: String
+
+
 
 
 
@@ -27,7 +36,14 @@ class MainViewModel: ViewModel() {
         viewModelScope.launch {
           _token.value = repo.getToken()
         }
+        viewModelScope.launch {
+            repoRelease.loadReleaseDate()
+        }
+        release = repoRelease.releaseDate.value.toString()
+        Log.d(TAG,"token: ${_token.value.toString()}")
+        Log.d(TAG, "release: ${release}")
     }
+
 
 
     private val _games = MutableLiveData<List<Game>>()
