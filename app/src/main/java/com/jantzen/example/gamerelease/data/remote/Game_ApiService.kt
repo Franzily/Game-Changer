@@ -2,6 +2,9 @@ package com.jantzen.example.gamerelease.data.remote
 
 
 
+import com.jantzen.example.gamerelease.data.model.Game
+import com.jantzen.example.gamerelease.data.model.Game_Alternative
+import com.jantzen.example.gamerelease.data.model.Game_Cover
 import com.jantzen.example.gamerelease.data.model.Game_Release
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -9,7 +12,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.POST
 
 
@@ -30,7 +32,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 // name muss geändert werden
-interface Game_ReleaseApiService {
+interface Game_ApiService {
 
 
     // muss angepasst werden
@@ -41,9 +43,32 @@ interface Game_ReleaseApiService {
         @Header ("Authorization") auth: String,
         @Body fields: String = "fields name,date"
     ): List<Game_Release>
+
+    @POST("alternative_names")
+    suspend fun getName(
+        @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
+        @Header ("Authorization") auth: String,
+        @Body fields: String = "fields name,date"
+    ): List<Game_Alternative>
+
+    @POST("games")
+    suspend fun getGame(
+        @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
+        @Header ("Authorization") auth: String,
+        @Body fields: String = "fields name,date"
+    ): List<Game>
+
+    @POST("covers")
+    suspend fun getCover(
+        @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
+        @Header ("Authorization") auth: String,
+        @Body fields: String = "fields name,date"
+    ): List<Game_Cover>
+
+
 }
 
 // namen müssen geändert werden
 object Game_ReleaseAPI {
-    val retrofitService: Game_ReleaseApiService by lazy { retrofit.create(Game_ReleaseApiService::class.java) }
+    val retrofitService: Game_ApiService by lazy { retrofit.create(Game_ApiService::class.java) }
 }

@@ -92,8 +92,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/materialToolbar_uebersicht"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton6"
+        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintStart_toStartOf="@+id/materialToolbar_uebersicht"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="52dp"
         tools:text="text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,8 +26,24 @@ class fragment_uebersicht : Fragment() {
         //binding.recyclerViewUebersicht.adapter = recyclerView
         viewModel.token.observe(viewLifecycleOwner){
             viewModel.loadReleaseData("Bearer ${it.access_token}")
+            viewModel.loadAlternativeData("Bearer ${it.access_token}")
+            viewModel.loadGame("Bearer ${it.access_token}")
+            viewModel.loadGame("Bearer ${it.access_token}")
         }
+
         viewModel.releaseDates.observe(viewLifecycleOwner){
+            //binding.textView21.text = it.size.toString()
+        }
+
+
+        viewModel.alternativeGame.observe(viewLifecycleOwner){
+            //binding.textView21.text = it.size.toString()
+        }
+
+        viewModel.games.observe(viewLifecycleOwner){
+            //binding.textView21.text = it.size.toString()
+        }
+        viewModel.cover.observe(viewLifecycleOwner){
             binding.textView21.text = it.size.toString()
         }
 
@@ -49,15 +65,10 @@ class fragment_uebersicht : Fragment() {
     ): View? {
 
 
-
         // Inflate the layout for this fragment
         binding = FragmentUebersichtBinding.inflate(layoutInflater)
         return binding.root
     }
-
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
