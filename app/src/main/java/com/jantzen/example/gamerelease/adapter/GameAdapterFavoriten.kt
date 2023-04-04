@@ -17,7 +17,7 @@ class GameAdapterFavoriten : RecyclerView.Adapter<GameAdapterFavoriten.ItemViewH
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
 
-        val image: ImageView = view.findViewById(R.id.game_image)
+        val cover: ImageView = view.findViewById(R.id.game_image)
         val name: TextView = view.findViewById(R.id.game_name_favorite)
         val date: TextView = view.findViewById(R.id.game_date_favorite)
         val fav: ImageButton = view.findViewById(R.id.imageButton_fav)
@@ -35,8 +35,8 @@ class GameAdapterFavoriten : RecyclerView.Adapter<GameAdapterFavoriten.ItemViewH
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val game = dataset[position]
-       // holder.name.text = game.name
-        //holder.date.text = game.date
+        holder.name.text = game.name
+        holder.date.text = game.date
     }
 
     override fun getItemCount(): Int {

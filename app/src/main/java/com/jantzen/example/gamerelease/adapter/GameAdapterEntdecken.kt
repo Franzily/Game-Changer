@@ -17,7 +17,7 @@ class GameAdapterEntdecken : RecyclerView.Adapter<GameAdapterEntdecken.ItemViewH
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
 
-        val image: ImageView = view.findViewById(R.id.game_image)
+        val cover: ImageView = view.findViewById(R.id.game_image)
         val name: TextView = view.findViewById(R.id.game_name_entdecken)
         val date: TextView = view.findViewById(R.id.game_date_entdecken)
         val toolbar: MaterialToolbar = view.findViewById(R.id.materialToolbar_entdecken)
@@ -33,8 +33,8 @@ class GameAdapterEntdecken : RecyclerView.Adapter<GameAdapterEntdecken.ItemViewH
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val game = dataset[position]
-       // holder.name.text = game.name
-      //  holder.date.text = game.date
+        holder.name.text = game.name
+        holder.date.text = game.date
     }
 
     override fun getItemCount(): Int {
