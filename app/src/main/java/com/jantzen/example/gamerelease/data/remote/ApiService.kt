@@ -34,7 +34,7 @@ private val retrofit = Retrofit.Builder()
 interface ApiService {
     @POST("token")
     suspend fun getToken(@Query("client_id") id : String = "wqtf67sczgqg3ptcura88lvj4cvio4",
-                         @Query("client_secret") secret : String = "5ygpxmszngeue7fa9qvj7xr2ggf9xw" ,
+                         @Query("client_secret") secret : String = "d2ehfvv590i9fpubfznqu0lox8urb7" ,
                          @Query("grant_type") grant : String = "client_credentials"
     ) : ResponseToken
 }

@@ -25,9 +25,11 @@ class fragment_uebersicht : Fragment() {
        // val recyclerView = GameAdapterUebersicht(requireContext(), Game)
         //binding.recyclerViewUebersicht.adapter = recyclerView
         viewModel.token.observe(viewLifecycleOwner){
-            binding.textView21.text = viewModel.token.value?.access_token
+            viewModel.loadReleaseData("Bearer ${it.access_token}")
         }
-
+        viewModel.releaseDates.observe(viewLifecycleOwner){
+            binding.textView21.text = it.size.toString()
+        }
 
 
 
