@@ -1,6 +1,6 @@
 package com.jantzen.example.gamerelease.data.model
 
-data class Game_Master(val cover: String,
+data class Game_Master(val cover: Int,
                        val name: String,
                        val date: String,
                        val storyline: String,

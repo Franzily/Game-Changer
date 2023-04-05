@@ -18,80 +18,70 @@ class MainViewModel: ViewModel() {
 
 
     private val _token = MutableLiveData<ResponseToken>()
-    val token: LiveData<ResponseToken>
-        get() = _token
+    val token : LiveData<ResponseToken>
+    get() = _token
 
-    val releaseDates: LiveData<List<Game_Release>>
+    val releaseDates : LiveData<List<Game_Release>>
         get() = repo.releaseDate
 
-    val alternativeGame: LiveData<List<Game_Alternative>>
+    val alternativeGame : LiveData<List<Game_Alternative>>
         get() = repo.alternativeGame
 
-    val games: LiveData<List<Game>>
+    val games : LiveData<List<Game>>
         get() = repo.games
 
-    val cover: LiveData<List<Game_Cover>>
+    val cover : LiveData<List<Game_Cover>>
         get() = repo.cover
+
 
 
     init {
         Log.d(TAG, "init")
         viewModelScope.launch {
-            _token.value = repo.getToken()
+          _token.value = repo.getToken()
         }
     }
 
-    fun loadReleaseData(token: String) {
-        viewModelScope.launch {
+    fun loadReleaseData(token: String){
+        viewModelScope.launch{
             repo.loadReleaseDate(token)
         }
     }
 
-    fun loadAlternativeData(token: String) {
+    fun loadAlternativeData(token: String){
         viewModelScope.launch {
             repo.loadAlternativeName(token)
         }
     }
 
-    fun loadGame(token: String) {
+    fun loadGame(token: String){
         viewModelScope.launch {
             repo.loadGames(token)
         }
     }
 
-     fun loadCover(token: String) {
-         var gameID : MutableList<Int>
-         games.value!![0].id
-         gameID = mutableListOf()
-
-         for (game in games.value!!){
-             gameID.add(game.id!!)
-         }
-
-         viewModelScope.launch {
-             repo.loadCover(token, gameID)
-
-         }
+    fun loadCover(token: String){
+        viewModelScope.launch{
+            repo.loadCover(token)
+        }
+    }
 
 
-
-
-     }
-    fun addGameToFav(game: Game) {
-        val currentList = _favoriteGameList.value ?: emptyList()
+    fun addGameToFav(game:Game){
+        val currentList = _favoriteGameList.value?: emptyList()
         val newList = currentList + game
         _favoriteGameList.value = newList
     }
-
     private val _games = MutableLiveData<List<Game>>()
-    val games1: LiveData<List<Game>>
+    val games1 : LiveData<List<Game>>
         get() = _games
 
     private val _favoriteGameList = MutableLiveData<List<Game>>(emptyList())
     val favoriteGameList: LiveData<List<Game>>
         get() = _favoriteGameList
 
-    fun addGame(game: Game) {
+    fun addGame(game: Game){
         val list = _games.value?.plus(game)
     }
+
 }

@@ -2,7 +2,6 @@ package com.jantzen.example.gamerelease.data.remote
 
 
 
-import com.jantzen.example.gamerelease.MainViewModel
 import com.jantzen.example.gamerelease.data.model.Game
 import com.jantzen.example.gamerelease.data.model.Game_Alternative
 import com.jantzen.example.gamerelease.data.model.Game_Cover
@@ -15,6 +14,8 @@ import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
 
+
+//private val viewModel: MainViewModel by viewModels<MainViewModel>()
 
  //var token = Repository(TokenAPI).getToken()
 
@@ -54,14 +55,14 @@ interface Game_ApiService {
     suspend fun getGame(
         @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
         @Header ("Authorization") auth: String,
-        @Body fields: String = "fields name,date,cover,id,game_modes,genre,storyline; limit 10"
+        @Body fields: String = "fields name,date"
     ): List<Game>
 
     @POST("covers")
     suspend fun getCover(
         @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
         @Header ("Authorization") auth: String,
-        @Body fields: String  //TODO ID einfügen
+        @Body fields: String = "fields name,date"
     ): List<Game_Cover>
 
 

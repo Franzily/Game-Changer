@@ -25,10 +25,10 @@ class fragment_uebersicht : Fragment() {
        // val recyclerView = GameAdapterUebersicht(requireContext(), Game)
         //binding.recyclerViewUebersicht.adapter = recyclerView
         viewModel.token.observe(viewLifecycleOwner){
-            //viewModel.loadReleaseData("Bearer ${it.access_token}")
-           // viewModel.loadAlternativeData("Bearer ${it.access_token}")
+            viewModel.loadReleaseData("Bearer ${it.access_token}")
+            viewModel.loadAlternativeData("Bearer ${it.access_token}")
             viewModel.loadGame("Bearer ${it.access_token}")
-
+            viewModel.loadGame("Bearer ${it.access_token}")
         }
 
         viewModel.releaseDates.observe(viewLifecycleOwner){
@@ -41,10 +41,10 @@ class fragment_uebersicht : Fragment() {
         }
 
         viewModel.games.observe(viewLifecycleOwner){
-            viewModel.loadCover("Bearer ${viewModel.token.value}")
+            //binding.textView21.text = it.size.toString()
         }
         viewModel.cover.observe(viewLifecycleOwner){
-
+            binding.textView21.text = it.size.toString()
         }
 
 
