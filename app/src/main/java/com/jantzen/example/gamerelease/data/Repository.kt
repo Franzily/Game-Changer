@@ -39,13 +39,26 @@ class Repository (private val tApi: TokenAPI, private val gameApi: Game_ReleaseA
         _games.value = gameApi.retrofitService.getGame(auth = token)
     }
 
-    suspend fun loadCover(token:String){
+    suspend fun loadCover(token:String, gameID: List<Int>){
+        var ids = gameID[0].toString()
+
+        for (i in gameID){
+            ids += (", ${gameID.toString()}")
+        }
+        _cover.value = gameApi.retrofitService.getCover(auth = token, fields = "fields name,date,id,url; where id = (${ids})")
+
 
     }
+
+
+
     suspend fun getToken():ResponseToken{
         Log.d(TAG, "Api anfrage")
         return tApi.retrofitService.getToken()
        // Log.d(TAG, "${token.access_token}")
 
     }
+
+
+
 }
