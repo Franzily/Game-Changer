@@ -5,10 +5,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jantzen.example.gamerelease.data.model.*
-import com.jantzen.example.gamerelease.data.remote.Game_ReleaseAPI
+import com.jantzen.example.gamerelease.data.remote.GameAPI
 import com.jantzen.example.gamerelease.data.remote.TokenAPI
 
-class Repository (private val tApi: TokenAPI, private val gameApi: Game_ReleaseAPI){
+class Repository (private val tApi: TokenAPI, private val gameApi: GameAPI){
 
 
     private val _releaseDate = MutableLiveData<List<Game_Release>>()
@@ -40,12 +40,12 @@ class Repository (private val tApi: TokenAPI, private val gameApi: Game_ReleaseA
     }
 
     suspend fun loadCover(token:String, gameID: List<Int>){
-        var ids = gameID[0].toString()
-
-        for (i in gameID){
-            ids += (", ${gameID.toString()}")
+        var  ids: String =""
+        if(gameID.size >=1){
+        for (i in 0 until gameID.size){
+            ids += (",${i.toString()}")
         }
-        _cover.value = gameApi.retrofitService.getCover(auth = token, fields = "fields name,date,id,url; where id = (${ids})")
+        _cover.value = gameApi.retrofitService.getCover(auth = token, fields = "fields date,id,url; where id = (${ids})")
 
 
     }

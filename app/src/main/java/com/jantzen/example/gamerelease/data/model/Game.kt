@@ -5,4 +5,4 @@ data class Game (
     val game_modes: String?,
     val genre: String?,
     val storyline: String?,
-    val cover: String?)
+    val cover: Int?)

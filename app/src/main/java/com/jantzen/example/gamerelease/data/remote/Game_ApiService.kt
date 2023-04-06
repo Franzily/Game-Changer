@@ -2,7 +2,6 @@ package com.jantzen.example.gamerelease.data.remote
 
 
 
-import com.jantzen.example.gamerelease.MainViewModel
 import com.jantzen.example.gamerelease.data.model.Game
 import com.jantzen.example.gamerelease.data.model.Game_Alternative
 import com.jantzen.example.gamerelease.data.model.Game_Cover
@@ -54,7 +53,7 @@ interface Game_ApiService {
     suspend fun getGame(
         @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
         @Header ("Authorization") auth: String,
-        @Body fields: String = "fields name,date,cover,id,game_modes,genre,storyline; limit 10"
+        @Body fields: String = "fields name,first_release_date,cover,id,game_modes,storyline; limit 10"
     ): List<Game>
 
     @POST("covers")
@@ -68,6 +67,6 @@ interface Game_ApiService {
 }
 
 // namen müssen geändert werden
-object Game_ReleaseAPI {
+object GameAPI {
     val retrofitService: Game_ApiService by lazy { retrofit.create(Game_ApiService::class.java) }
 }

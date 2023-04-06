@@ -8,13 +8,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jantzen.example.gamerelease.data.Repository
 import com.jantzen.example.gamerelease.data.model.*
-import com.jantzen.example.gamerelease.data.remote.Game_ReleaseAPI
+import com.jantzen.example.gamerelease.data.remote.GameAPI
 import com.jantzen.example.gamerelease.data.remote.TokenAPI
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
 
-    var repo = Repository(TokenAPI, Game_ReleaseAPI)
+    var repo = Repository(TokenAPI, GameAPI)
 
 
     private val _token = MutableLiveData<ResponseToken>()
@@ -61,12 +61,14 @@ class MainViewModel: ViewModel() {
 
      fun loadCover(token: String) {
          var gameID : MutableList<Int>
-         games.value!![0].id
          gameID = mutableListOf()
 
-         for (game in games.value!!){
-             gameID.add(game.id!!)
+         for (game in games.value!!) {
+             if (game.cover != null) {
+                 gameID.add(game.cover!!)
+             }
          }
+
 
          viewModelScope.launch {
              repo.loadCover(token, gameID)
