@@ -1,13 +1,16 @@
 package com.jantzen.example.gamerelease
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.jantzen.example.gamerelease.adapter.GameAdapterFavoriten
 import com.jantzen.example.gamerelease.adapter.GameAdapterUebersicht
 import com.jantzen.example.gamerelease.data.model.Game
@@ -17,42 +20,23 @@ import com.jantzen.example.gamerelease.databinding.FragmentUebersichtBinding
 
 class fragment_uebersicht : Fragment() {
     private lateinit var binding: FragmentUebersichtBinding
-    private val viewModel : MainViewModel by viewModels()
+    private val viewModel : MainViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val name = requireArguments().getString("name")
-       // val recyclerView = GameAdapterUebersicht(requireContext(), Game)
-        //binding.recyclerViewUebersicht.adapter = recyclerView
-        viewModel.token.observe(viewLifecycleOwner){
-            //viewModel.loadReleaseData("Bearer ${it.access_token}")
-           // viewModel.loadAlternativeData("Bearer ${it.access_token}")
-            viewModel.loadGame("Bearer ${it.access_token}")
+        val adapter = GameAdapterUebersicht()
+        binding.RecyclerViewUebersicht.adapter = adapter
+
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(binding.RecyclerViewUebersicht)
+
+        viewModel.repo.games.observe(viewLifecycleOwner) {
+
+            Log.d("observer", "games erhalten ${viewModel.repo.games.value!!.size}")
+            adapter.submitList(it)
+
 
         }
-
-        viewModel.releaseDates.observe(viewLifecycleOwner){
-            //binding.textView21.text = it.size.toString()
-        }
-
-
-        viewModel.alternativeGame.observe(viewLifecycleOwner){
-            //binding.textView21.text = it.size.toString()
-        }
-
-        viewModel.games.observe(viewLifecycleOwner){
-            viewModel.loadCover("Bearer ${viewModel.token.value}")
-        }
-        viewModel.cover.observe(viewLifecycleOwner){
-
-        }
-
-
-
-        val adapter = GameAdapterFavoriten()
-        //binding.materialToolbarUebersicht.title = name
-
-
     }
 
 

@@ -19,9 +19,9 @@ class Fragment_favorite : Fragment() {
         //val name = requireArguments().getString("name")
 
         val adapter = GameAdapterFavoriten()
+        binding.RecyclerViewFav.adapter = adapter
        // binding.materialToolbarFav.title = name
         Navigation.findNavController(view).navigateUp()
-
 
     }
 

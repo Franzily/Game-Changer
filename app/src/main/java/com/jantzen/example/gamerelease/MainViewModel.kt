@@ -9,71 +9,27 @@ import androidx.lifecycle.viewModelScope
 import com.jantzen.example.gamerelease.data.Repository
 import com.jantzen.example.gamerelease.data.model.*
 import com.jantzen.example.gamerelease.data.remote.GameAPI
-import com.jantzen.example.gamerelease.data.remote.TokenAPI
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
 
-    var repo = Repository(TokenAPI, GameAPI)
+    var repo = Repository(GameAPI)
 
 
-    private val _token = MutableLiveData<ResponseToken>()
-    val token: LiveData<ResponseToken>
-        get() = _token
-
-    val releaseDates: LiveData<List<Game_Release>>
-        get() = repo.releaseDate
-
-    val alternativeGame: LiveData<List<Game_Alternative>>
-        get() = repo.alternativeGame
-
-    val games: LiveData<List<Game>>
-        get() = repo.games
-
-    val cover: LiveData<List<Game_Cover>>
-        get() = repo.cover
 
 
     init {
         Log.d(TAG, "init")
+        loadGame()
+    }
+
+    fun loadGame() {
         viewModelScope.launch {
-            _token.value = repo.getToken()
+            repo.getGames("")
         }
     }
 
-    fun loadReleaseData(token: String) {
-        viewModelScope.launch {
-            repo.loadReleaseDate(token)
-        }
-    }
 
-    fun loadAlternativeData(token: String) {
-        viewModelScope.launch {
-            repo.loadAlternativeName(token)
-        }
-    }
-
-    fun loadGame(token: String) {
-        viewModelScope.launch {
-            repo.loadGames(token)
-        }
-    }
-
-     fun loadCover(token: String) {
-         var gameID : MutableList<Int>
-         gameID = mutableListOf()
-
-         for (game in games.value!!) {
-             if (game.cover != null) {
-                 gameID.add(game.cover!!)
-             }
-         }
-
-
-         viewModelScope.launch {
-             repo.loadCover(token, gameID)
-
-         }
 
 
 
@@ -96,4 +52,4 @@ class MainViewModel: ViewModel() {
     fun addGame(game: Game) {
         val list = _games.value?.plus(game)
     }
-}
+

@@ -2,71 +2,58 @@ package com.jantzen.example.gamerelease.data.remote
 
 
 
-import com.jantzen.example.gamerelease.data.model.Game
-import com.jantzen.example.gamerelease.data.model.Game_Alternative
-import com.jantzen.example.gamerelease.data.model.Game_Cover
-import com.jantzen.example.gamerelease.data.model.Game_Release
+import com.jantzen.example.gamerelease.data.model.GamesResult
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 
- //var token = Repository(TokenAPI).getToken()
+//var token = Repository(TokenAPI).getToken()
 
 // muss geändert werden
-const val BASE_URL_RELEASE = "https://api.igdb.com/v4/"
+const val API_KEY = "aeb1018d19b49a20d43f475b49d396897085e9dd"
+const val FORMAT = "json"
+const val BASE_URL = "https://www.giantbomb.com/api/"
+
+val client: OkHttpClient =
+    OkHttpClient.Builder().addInterceptor { chain ->
+        val newRequest: Request = chain.request().newBuilder()
+            .build()
+        chain.proceed(newRequest)
+    }.build()
+
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
+
 private val retrofit = Retrofit.Builder()
+    .client(client)
     .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(BASE_URL_RELEASE)
+    .baseUrl(BASE_URL)
     .build()
 
-// name muss geändert werden
+
 interface Game_ApiService {
 
 
-    // muss angepasst werden
-    //@Headers( "client_id: wqtf67sczgqg3ptcura88lvj4cvio4", "Authorization: Bearer g6q60hrgdbrgk8h0c9smra4pctcbhf" )
-    @POST("release_dates")
-    suspend fun getRelease(
-        @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
-        @Header ("Authorization") auth: String,
-        @Body fields: String = "fields name,date"
-    ): List<Game_Release>
-
-    @POST("alternative_names")
-    suspend fun getName(
-        @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
-        @Header ("Authorization") auth: String,
-        @Body fields: String = "fields name,date"
-    ): List<Game_Alternative>
-
-    @POST("games")
+    @GET("games")
     suspend fun getGame(
-        @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
-        @Header ("Authorization") auth: String,
-        @Body fields: String = "fields name,first_release_date,cover,id,game_modes,storyline; limit 10"
-    ): List<Game>
-
-    @POST("covers")
-    suspend fun getCover(
-        @Header ("Client-ID") id: String = "wqtf67sczgqg3ptcura88lvj4cvio4",
-        @Header ("Authorization") auth: String,
-        @Body fields: String  //TODO ID einfügen
-    ): List<Game_Cover>
-
+       // @Query ("filter") filter: String,
+        @Query ("api key") key: String = API_KEY,
+        @Query ("format") format: String = FORMAT,
+        @Query ("sort") sort: String = "original_release_date:desc"
+        //@Query ("limit") limit: Int = 100
+    ): GamesResult
 
 }
 
-// namen müssen geändert werden
 object GameAPI {
     val retrofitService: Game_ApiService by lazy { retrofit.create(Game_ApiService::class.java) }
 }

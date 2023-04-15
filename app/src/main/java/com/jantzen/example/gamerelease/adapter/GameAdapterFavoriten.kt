@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.jantzen.example.gamerelease.R
 import com.jantzen.example.gamerelease.data.model.Game
-import com.jantzen.example.gamerelease.data.model.Game_Master
 
 class GameAdapterFavoriten : RecyclerView.Adapter<GameAdapterFavoriten.ItemViewHolder>(){
-    private var dataset = listOf<Game_Master>()
+    private var dataset = listOf<Game>()
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
 
@@ -36,7 +35,7 @@ class GameAdapterFavoriten : RecyclerView.Adapter<GameAdapterFavoriten.ItemViewH
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val game = dataset[position]
         holder.name.text = game.name
-        holder.date.text = game.date
+       // holder.date.text = game.date
     }
 
     override fun getItemCount(): Int {
