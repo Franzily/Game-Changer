@@ -22,29 +22,26 @@
             android:id="@+id/game_name_entdecken"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="220dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="20dp"
+            android:gravity="center"
             android:textColor="#000000"
+            android:textSize="20sp"
             tools:text="dead island" />
 
         <TextView
             android:id="@+id/game_date_entdecken"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="250dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="80dp"
             android:layout_marginBottom="20dp"
             android:textColor="#000000"
+            android:textSize="20sp"
             tools:text="21.04.2023" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="350dp"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/baseline_star_border_24" />
     </androidx.cardview.widget.CardView>
 
 </com.google.android.material.card.MaterialCardView>

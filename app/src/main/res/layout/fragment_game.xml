@@ -57,23 +57,12 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView_image"
         tools:text="21.04.2023" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView13"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_color"
-        app:cardBackgroundColor="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_name_text" />
-
     <TextView
         android:id="@+id/game_description_head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Beschreibung"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -81,14 +70,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView13" />
+        app:layout_constraintTop_toBottomOf="@+id/game_name_text" />
 
     <TextView
         android:id="@+id/game_description_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/game_description_head"
@@ -111,10 +101,11 @@
 
     <TextView
         android:id="@+id/game_plattform_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/game_plattform_head"
@@ -131,19 +122,6 @@
         android:src="@drawable/baseline_star_border_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView_image" />
-
-    <TextView
-        android:id="@+id/game_publisher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/game_description_head"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView13"
-        tools:text="Publisher" />
 
     <ImageButton
         android:id="@+id/imageButton_menu_game"

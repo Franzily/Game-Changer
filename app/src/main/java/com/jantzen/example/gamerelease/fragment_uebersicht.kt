@@ -31,24 +31,15 @@ class fragment_uebersicht : Fragment() {
         snapHelper.attachToRecyclerView(binding.RecyclerViewUebersicht)
 
         viewModel.repo.games.observe(viewLifecycleOwner) {
-
             Log.d("observer", "games erhalten ${viewModel.repo.games.value!!.size}")
             adapter.submitList(it)
-
-
         }
     }
-
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         // Inflate the layout for this fragment
         binding = FragmentUebersichtBinding.inflate(layoutInflater)
         return binding.root
