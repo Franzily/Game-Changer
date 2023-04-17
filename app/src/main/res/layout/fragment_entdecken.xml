@@ -15,12 +15,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_platform_entdecken"
         app:layout_constraintVertical_bias="0.42000002"
-        tools:listitem="@layout/item_entdecken" />
+        tools:listitem="@layout/item_entdecken"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
+        android:id="@+id/cardView_platform_entdecken"
         android:layout_width="100dp"
         android:layout_height="20dp"
         android:layout_marginStart="64dp"
@@ -38,6 +39,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_year"
         android:layout_width="100dp"
         android:layout_height="20dp"
         android:layout_marginTop="5dp"

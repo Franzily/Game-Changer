@@ -8,7 +8,7 @@ import android.view.ViewGroup
 
 
 
-class Fragment_Kategorie : Fragment() {
+class Fragment_Year : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -19,7 +19,7 @@ class Fragment_Kategorie : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__kategorie, container, false)
+        return inflater.inflate(R.layout.fragment__year, container, false)
     }
 
 }

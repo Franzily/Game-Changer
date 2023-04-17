@@ -25,7 +25,7 @@ class Fragment_Splash : Fragment() {
         val view = inflater.inflate(R.layout.fragment__splash, container, false)
 
         Handler(Looper.myLooper()!!).postDelayed({
-            findNavController().navigate(R.id.fragment1)
+            findNavController().navigate(R.id.fragment_entdecken)
         }, 5000)
         return view
     }

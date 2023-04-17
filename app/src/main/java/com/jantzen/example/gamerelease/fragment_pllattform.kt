@@ -19,7 +19,7 @@ class fragment_pllattform : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__kategorie, container, false)
+        return inflater.inflate(R.layout.fragment__year, container, false)
     }
 
 }

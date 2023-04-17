@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -23,7 +24,18 @@ class Fragment_entdecken : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val cardviewPlatform: CardView = view.findViewById(R.id.cardView_platform_entdecken)
+        val cardviewYear: CardView = view.findViewById(R.id.cardview_year)
         //val name = requireArguments().getString("name")
+
+
+        binding.cardViewPlatformEntdecken.setOnClickListener {
+            Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragment2())
+        }
+
+        binding.cardviewYear.setOnClickListener {
+            Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragmentKategorie())
+        }
 
         val adapter = GameAdapterEntdecken()
         binding.RecyclerViewEntdecken.adapter = adapter
@@ -32,11 +44,11 @@ class Fragment_entdecken : Fragment() {
         snapHelper.attachToRecyclerView(binding.RecyclerViewEntdecken)
 
         viewModel.repo.games.observe(viewLifecycleOwner) {
-            Log.d("observer", "games erhalten ${viewModel.repo.games.value!!.size}")
+            Log.d("observer", "games erhalten entdecken ${viewModel.repo.games.value!!.size}")
             adapter.submitList(it)
         }
         //binding.materialToolbarEntdecken.title = name
-        Navigation.findNavController(view).navigateUp()
+        //Navigation.findNavController(view).navigateUp()
 
         //binding.materialToolbarEntdecken.
 

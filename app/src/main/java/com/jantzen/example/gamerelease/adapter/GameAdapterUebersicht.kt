@@ -3,13 +3,14 @@ package com.jantzen.example.gamerelease.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.net.toUri
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.google.android.material.appbar.MaterialToolbar
+import com.jantzen.example.gamerelease.FragmentUebersichtDirections
 import com.jantzen.example.gamerelease.R
 import com.jantzen.example.gamerelease.data.model.Game
 
@@ -22,8 +23,11 @@ class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ViewH
         val image: ImageView = view.findViewById(R.id.game_image_uebersicht)
         val name: TextView = view.findViewById(R.id.game_name_uebersicht)
         val date: TextView = view.findViewById(R.id.game_date_uebersicht)
-        //val favButton: ImageButton = view.findViewById(R.id.imageButton_fav)
         //val toolbar: MaterialToolbar = view.findViewById(R.id.materialToolbar_uebersicht)
+        val cardview: CardView = view.findViewById(R.id.cardView_game_detail)
+
+
+
 
     }
 
@@ -40,6 +44,10 @@ class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ViewH
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val game = dataset[position]
+        holder.cardview.setOnClickListener {
+            findNavController(it).navigate(FragmentUebersichtDirections.actionFragmentUebersichtToFragmentGame(game.name!!))
+        }
+
         try {
             holder.name.text = game.name
             holder.date.text = game.expected_release_year.toString()

@@ -3,52 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragment_Splash">
+    app:startDestination="@id/fragment_uebersicht">
 
     <fragment
-        android:id="@+id/fragment1"
-        android:name="com.jantzen.example.gamerelease.fragment_uebersicht"
+        android:id="@+id/fragment_uebersicht"
+        android:name="com.jantzen.example.gamerelease.FragmentUebersicht"
         android:label="fragment_fragment1"
         tools:layout="@layout/fragment_uebersicht" >
         <action
-            android:id="@+id/action_fragment1_to_fragment_game"
+            android:id="@+id/action_fragment_uebersicht_to_fragment_game"
             app:destination="@id/fragment_game" />
         <action
-            android:id="@+id/action_fragment1_to_fragment_favorite"
+            android:id="@+id/action_fragment_uebersicht_to_fragment_favorite"
             app:destination="@id/fragment_favorite" />
         <action
-            android:id="@+id/action_fragment1_to_fragment_entdecken"
+            android:id="@+id/action_fragment_uebersicht_to_fragment_entdecken"
             app:destination="@id/fragment_entdecken" />
     </fragment>
     <fragment
-        android:id="@+id/fragment2"
+        android:id="@+id/fragment_Platform"
         android:name="com.jantzen.example.gamerelease.fragment_pllattform"
         android:label="fragment_fragment2"
-        tools:layout="@layout/fragment_plattform" >
-        <action
-            android:id="@+id/action_fragment2_to_fragment_Kategorie"
-            app:destination="@id/fragment_Kategorie" />
-    </fragment>
+        tools:layout="@layout/fragment_plattform" />
     <fragment
-        android:id="@+id/fragment_Kategorie"
-        android:name="com.jantzen.example.gamerelease.Fragment_Kategorie"
+        android:id="@+id/fragment_Year"
+        android:name="com.jantzen.example.gamerelease.Fragment_Year"
         android:label="fragment__kategorie"
-        tools:layout="@layout/fragment__kategorie" >
-        <action
-            android:id="@+id/action_fragment_Kategorie_to_fragment1"
-            app:destination="@id/fragment1" />
-    </fragment>
+        tools:layout="@layout/fragment__year" />
     <fragment
         android:id="@+id/fragment_Splash"
         android:name="com.jantzen.example.gamerelease.Fragment_Splash"
         android:label="fragment__splash"
         tools:layout="@layout/fragment__splash" >
         <action
-            android:id="@+id/action_fragment_Splash_to_fragment2"
-            app:destination="@id/fragment2" />
-        <action
-            android:id="@+id/action_fragment_Splash_to_fragment1"
-            app:destination="@id/fragment1" />
+            android:id="@+id/action_fragment_Splash_to_fragment_uebersicht"
+            app:destination="@id/fragment_uebersicht" />
     </fragment>
     <fragment
         android:id="@+id/fragment_game"
@@ -56,8 +45,8 @@
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <argument
-            android:name="gameid"
-            app:argType="integer" />
+            android:name="name"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragment_favorite"
@@ -68,5 +57,15 @@
         android:id="@+id/fragment_entdecken"
         android:name="com.jantzen.example.gamerelease.Fragment_entdecken"
         android:label="fragment_entdecken"
-        tools:layout="@layout/fragment_entdecken" />
+        tools:layout="@layout/fragment_entdecken" >
+        <action
+            android:id="@+id/action_fragment_entdecken_to_fragment2"
+            app:destination="@id/fragment_Platform" />
+        <action
+            android:id="@+id/action_fragment_entdecken_to_fragment_Kategorie"
+            app:destination="@id/fragment_Year" />
+        <action
+            android:id="@+id/action_fragment_entdecken_to_fragment_game"
+            app:destination="@id/fragment_game" />
+    </fragment>
 </navigation>

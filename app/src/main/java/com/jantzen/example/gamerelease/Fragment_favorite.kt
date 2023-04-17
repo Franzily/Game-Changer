@@ -10,6 +10,7 @@ import com.jantzen.example.gamerelease.adapter.GameAdapterFavoriten
 import com.jantzen.example.gamerelease.databinding.FragmentFavoriteBinding
 
 
+
 class Fragment_favorite : Fragment() {
     private lateinit var binding: FragmentFavoriteBinding
 
@@ -21,7 +22,7 @@ class Fragment_favorite : Fragment() {
         val adapter = GameAdapterFavoriten()
         binding.RecyclerViewFav.adapter = adapter
        // binding.materialToolbarFav.title = name
-        Navigation.findNavController(view).navigateUp()
+        //Navigation.findNavController(view).navigateUp()
 
     }
 
@@ -32,7 +33,8 @@ class Fragment_favorite : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+        binding = FragmentFavoriteBinding.inflate(layoutInflater)
+        return binding.root
     }
 
 }

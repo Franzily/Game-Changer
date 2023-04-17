@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    tools:context=".fragment_uebersicht">
+    tools:context=".FragmentUebersicht">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar_uebersicht"

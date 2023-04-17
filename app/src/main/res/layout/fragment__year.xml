@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment_Kategorie">
+    tools:context=".Fragment_Year">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
@@ -36,9 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:text="2025+"
             android:textColor="#000000"
-            android:textStyle="bold"
-            tools:text="Action" />
+            android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
 
@@ -70,7 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Adventure"
+                    android:text="2024"
                     android:textColor="#000000"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -106,7 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Arcade"
+                    android:text="2023"
                     android:textColor="#000000"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -142,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Battle Royale"
+                    android:text="2022"
                     android:textColor="#000000"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -178,7 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Horror"
+                    android:text="2021"
                     android:textColor="#000000"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -214,7 +214,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="RPG"
+                    android:text="2020"
                     android:textColor="#000000"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -250,7 +250,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Shooter"
+                    android:text="2019"
                     android:textColor="#000000"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -286,78 +286,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Simulation"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView12"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_color"
-        app:cardBackgroundColor="#00FFFFFF"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView10"
-        app:layout_constraintStart_toStartOf="@+id/cardView10"
-        app:layout_constraintTop_toBottomOf="@+id/cardView10">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_color"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_color"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Sport"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="150dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_color"
-        app:cardBackgroundColor="#00FFFFFF"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView11"
-        app:layout_constraintStart_toStartOf="@+id/cardView11"
-        app:layout_constraintTop_toBottomOf="@+id/cardView11">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_color"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_color"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Strategie"
+                    android:text="2018"
                     android:textColor="#000000"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -392,7 +321,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="wähle mind. 1 Kategorie aus"
+        android:text="suche Spiele anhand des Jahres"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

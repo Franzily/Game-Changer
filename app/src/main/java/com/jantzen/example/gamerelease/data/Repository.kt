@@ -13,6 +13,7 @@ class Repository (private val gameApi: GameAPI) {
     val games: LiveData<List<Game>>
         get() = _games
 
+
     suspend fun getGames(filter: String){
        try {
 
