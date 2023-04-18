@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,9 +45,10 @@
         android:id="@+id/imageButton_search_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/search"
-        app:layout_constraintBottom_toTopOf="@+id/RecyclerView_Fav"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton_menu_fav"
         app:layout_constraintEnd_toStartOf="@+id/imageButton_menu_fav"
         app:layout_constraintTop_toTopOf="@+id/materialToolbar_fav" />
 
@@ -54,10 +56,11 @@
         android:id="@+id/imageButton_back_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/back_button"
-        app:layout_constraintBottom_toTopOf="@+id/RecyclerView_Fav"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialToolbar_fav" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

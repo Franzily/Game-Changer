@@ -8,7 +8,7 @@
     tools:context=".fragment_pllattform">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardview_plattform"
+        android:id="@+id/cardview_playstation"
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:layout_marginStart="32dp"
@@ -43,7 +43,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardview_plattform2"
+        android:id="@+id/cardview_pc"
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:layout_marginStart="64dp"
@@ -51,7 +51,7 @@
         android:layout_marginEnd="64dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardview_plattform"
+        app:layout_constraintStart_toEndOf="@+id/cardview_playstation"
         app:layout_constraintTop_toBottomOf="@+id/textView19">
 
         <LinearLayout
@@ -79,14 +79,14 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardview_plattform3"
+        android:id="@+id/cardview_nintendo"
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
         app:cardCornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardview_plattform"
-        app:layout_constraintStart_toStartOf="@+id/cardview_plattform"
-        app:layout_constraintTop_toBottomOf="@+id/cardview_plattform">
+        app:layout_constraintEnd_toEndOf="@+id/cardview_playstation"
+        app:layout_constraintStart_toStartOf="@+id/cardview_playstation"
+        app:layout_constraintTop_toBottomOf="@+id/cardview_playstation">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,17 +113,17 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardview_plattform4"
+        android:id="@+id/cardview_xbox"
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="64dp"
         app:cardCornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardview_plattform2"
+        app:layout_constraintEnd_toEndOf="@+id/cardview_pc"
         app:layout_constraintHorizontal_bias="0.24"
-        app:layout_constraintStart_toEndOf="@+id/cardview_plattform3"
-        app:layout_constraintTop_toBottomOf="@+id/cardview_plattform2">
+        app:layout_constraintStart_toEndOf="@+id/cardview_nintendo"
+        app:layout_constraintTop_toBottomOf="@+id/cardview_pc">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,7 +150,7 @@
     </androidx.cardview.widget.CardView>
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/imageButton_platform"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="32dp"
@@ -166,10 +166,10 @@
         android:text="weiter"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-        app:layout_constraintStart_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toTopOf="@+id/imageButton3" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton_platform"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton_platform"
+        app:layout_constraintStart_toStartOf="@+id/imageButton_platform"
+        app:layout_constraintTop_toTopOf="@+id/imageButton_platform" />
 
     <TextView
         android:id="@+id/textView19"
@@ -180,6 +180,16 @@
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton_back_platform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/back_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

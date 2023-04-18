@@ -24,27 +24,20 @@ class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ViewH
         val name: TextView = view.findViewById(R.id.game_name_uebersicht)
         val date: TextView = view.findViewById(R.id.game_date_uebersicht)
         //val toolbar: MaterialToolbar = view.findViewById(R.id.materialToolbar_uebersicht)
-        val cardview: CardView = view.findViewById(R.id.cardView_game_detail)
-
-
-
-
+        val cardviewUebersicht: CardView = view.findViewById(R.id.materialCardUebersicht)
     }
-
     fun submitList(newList: List<Game>) {
         dataset = newList
         notifyDataSetChanged()
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_uebersicht, parent, false)
         return ViewHolder(adapterLayout)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val game = dataset[position]
-        holder.cardview.setOnClickListener {
+        holder.cardviewUebersicht.setOnClickListener {
             findNavController(it).navigate(FragmentUebersichtDirections.actionFragmentUebersichtToFragmentGame(game.name!!))
         }
 
@@ -56,8 +49,6 @@ class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ViewH
         }
 
         try {
-
-
             if (game.image!!.medium_url != null) {
                 val imageURI = game.image.medium_url!!.toUri().buildUpon().scheme("https").build()
                 holder.image.load(imageURI)

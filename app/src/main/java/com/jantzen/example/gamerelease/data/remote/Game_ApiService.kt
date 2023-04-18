@@ -12,10 +12,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
-//var token = Repository(TokenAPI).getToken()
-
-// muss geändert werden
 const val API_KEY = "aeb1018d19b49a20d43f475b49d396897085e9dd"
 const val FORMAT = "json"
 const val BASE_URL = "https://www.giantbomb.com/api/"
@@ -27,11 +23,9 @@ val client: OkHttpClient =
         chain.proceed(newRequest)
     }.build()
 
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
-
 
 private val retrofit = Retrofit.Builder()
     .client(client)
@@ -39,10 +33,7 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-
 interface Game_ApiService {
-
-
     @GET("games")
     suspend fun getGame(
        // @Query ("filter") filter: String,
@@ -51,7 +42,11 @@ interface Game_ApiService {
         @Query ("sort") sort: String = "original_release_date:desc"
         //@Query ("limit") limit: Int = 100
     ): GamesResult
-
+    @GET("search")
+    suspend fun getSearchGame(
+        @Query ("term") term:String,
+        @Query ("name") name: String
+    ):GamesResult
 }
 
 object GameAPI {

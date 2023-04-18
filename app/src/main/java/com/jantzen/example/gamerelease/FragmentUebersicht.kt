@@ -24,10 +24,6 @@ class FragmentUebersicht : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = GameAdapterUebersicht()
         binding.RecyclerViewUebersicht.adapter = adapter
-
-
-
-
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.RecyclerViewUebersicht)
 
@@ -35,9 +31,6 @@ class FragmentUebersicht : Fragment() {
             Log.d("observer", "games erhalten ${viewModel.repo.games.value!!.size}")
             adapter.submitList(it)
         }
-
-
-
     }
 
     override fun onCreateView(
@@ -52,6 +45,4 @@ class FragmentUebersicht : Fragment() {
         super.onDestroyView()
 
     }
-
-
 }

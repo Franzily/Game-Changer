@@ -9,6 +9,7 @@ import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import coil.load
+import com.jantzen.example.gamerelease.data.model.Game
 import com.jantzen.example.gamerelease.databinding.FragmentFavoriteBinding
 import com.jantzen.example.gamerelease.databinding.FragmentGameBinding
 import com.jantzen.example.gamerelease.databinding.FragmentUebersichtBinding
@@ -17,52 +18,64 @@ import com.jantzen.example.gamerelease.databinding.FragmentUebersichtBinding
 class Fragment_game : Fragment() {
     private lateinit var binding: FragmentGameBinding
     private val viewModel : MainViewModel by activityViewModels()
+    var gameIsFav : Boolean = false
+    lateinit var currentGame : Game
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.imageButtonBackGame.setOnClickListener {
+            Navigation.findNavController(view).navigateUp()
+        }
 
-        Navigation.findNavController(view).navigateUp()
-        val currentGame = requireArguments().getString("name")
-        val ListGames = viewModel.gameRepo.value
+         currentGame = requireArguments().getParcelable<Game>("game")!!
 
-        if (ListGames != null) {
-            for (game in ListGames){
-                if (game.name == currentGame){
-                    binding.gameNameText.text = game.name
-                    binding.gameDateText.text = game.expected_release_year.toString()
-                    binding.gameDescriptionText.text = game.deck
-                    binding.gamePlattformText.text = game.platforms.toString()
+        if (currentGame != null){
+                    binding.gameNameText.text = currentGame!!.name
+                    binding.gameDateText.text = currentGame!!.expected_release_year.toString()
+                    binding.gameDescriptionText.text = currentGame!!.desk
+                    binding.gamePlattformText.text = currentGame!!.platforms.toString()
+                    gameIsFav = viewModel.inFav(currentGame!!)
+                    setFav()
+                    binding.imageButtonFav.setOnClickListener {
+                        gameIsFav = !gameIsFav
+                        setFav()
+
+                    }
                     try {
-
-
-                        if (game.image!!.medium_url != null) {
-                            val imageURI = game.image.medium_url!!.toUri().buildUpon().scheme("https").build()
+                        if (currentGame!!.image!!.medium_url != null) {
+                            val imageURI = currentGame!!.image!!.medium_url!!.toUri().buildUpon().scheme("https").build()
                             binding.gameImage.load(imageURI)
 
-                        } else if (game.image!!.super_url != null) {
-                            val imageURI = game.image.super_url!!.toUri().buildUpon().scheme("https").build()
+                        } else if (currentGame!!.image!!.super_url != null) {
+                            val imageURI = currentGame!!.image!!.super_url!!.toUri().buildUpon().scheme("https").build()
                             binding.gameImage.load(imageURI)
 
-                        } else if (game.image!!.small_url != null) {
-                            val imageURI = game.image.small_url!!.toUri().buildUpon().scheme("https").build()
+                        } else if (currentGame!!.image!!.small_url != null) {
+                            val imageURI = currentGame!!.image!!.small_url!!.toUri().buildUpon().scheme("https").build()
                             binding.gameImage.load(imageURI)
 
 
-                        } else if (game.image!!.original_url != null) {
-                            val imageURI = game.image.original_url!!.toUri().buildUpon().scheme("https").build()
+                        } else if (currentGame!!.image!!.original_url != null) {
+                            val imageURI = currentGame!!.image!!.original_url!!.toUri().buildUpon().scheme("https").build()
                             binding.gameImage.load(imageURI)
-
                         }
                     }catch (e: Exception){
                         //TODO platzhalter einfügen
                     }
-
                 }
-
             }
-        }
 
-    }
+    fun setFav(){
+
+        if (gameIsFav) {
+            binding.imageButtonFav.setImageResource(R.drawable.baseline_star_24)
+            viewModel.addFav(currentGame!!)
+        }else {
+            binding.imageButtonFav.setImageResource(R.drawable.baseline_star_border_24)
+            viewModel.deleteFav(currentGame!!)
+        }
+}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,6 +84,7 @@ class Fragment_game : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentGameBinding.inflate(layoutInflater)
         return binding.root
-    }
 
+
+    }
 }

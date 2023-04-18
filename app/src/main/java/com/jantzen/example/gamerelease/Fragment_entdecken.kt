@@ -21,18 +21,22 @@ import com.jantzen.example.gamerelease.databinding.FragmentUebersichtBinding
 class Fragment_entdecken : Fragment() {
     private lateinit var binding: FragmentEntdeckenBinding
     private val viewModel : MainViewModel by activityViewModels()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val cardviewPlatform: CardView = view.findViewById(R.id.cardView_platform_entdecken)
         val cardviewYear: CardView = view.findViewById(R.id.cardview_year)
         //val name = requireArguments().getString("name")
-
+        binding.backbuttonEntdecken.setOnClickListener {
+            Navigation.findNavController(view).navigateUp()
+        }
 
         binding.cardViewPlatformEntdecken.setOnClickListener {
             Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragment2())
         }
 
+        binding.cardviewYear.setOnClickListener {
+            Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragmentKategorie())
+        }
         binding.cardviewYear.setOnClickListener {
             Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragmentKategorie())
         }
@@ -47,12 +51,6 @@ class Fragment_entdecken : Fragment() {
             Log.d("observer", "games erhalten entdecken ${viewModel.repo.games.value!!.size}")
             adapter.submitList(it)
         }
-        //binding.materialToolbarEntdecken.title = name
-        //Navigation.findNavController(view).navigateUp()
-
-        //binding.materialToolbarEntdecken.
-
-
     }
 
     override fun onCreateView(
@@ -63,6 +61,4 @@ class Fragment_entdecken : Fragment() {
         binding = FragmentEntdeckenBinding.inflate(layoutInflater)
         return binding.root
     }
-
-
 }

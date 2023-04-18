@@ -13,7 +13,9 @@ class Repository (private val gameApi: GameAPI) {
     val games: LiveData<List<Game>>
         get() = _games
 
-
+    suspend fun search(term: String){
+        _games.value = gameApi.retrofitService.getGame(term, "name").results
+    }
     suspend fun getGames(filter: String){
        try {
 

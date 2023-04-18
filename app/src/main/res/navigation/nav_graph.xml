@@ -45,8 +45,8 @@
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <argument
-            android:name="name"
-            app:argType="string" />
+            android:name="game"
+            app:argType="com.jantzen.example.gamerelease.data.model.Game" />
     </fragment>
     <fragment
         android:id="@+id/fragment_favorite"

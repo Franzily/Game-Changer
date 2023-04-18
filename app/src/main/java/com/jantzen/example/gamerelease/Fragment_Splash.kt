@@ -29,5 +29,4 @@ class Fragment_Splash : Fragment() {
         }, 5000)
         return view
     }
-
 }

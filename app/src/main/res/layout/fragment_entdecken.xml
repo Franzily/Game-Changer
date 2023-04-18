@@ -93,6 +93,7 @@
         android:id="@+id/backbutton_entdecken"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/back_button"
         app:layout_constraintBottom_toBottomOf="@+id/materialToolbar_entdecken"

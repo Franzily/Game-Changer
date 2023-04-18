@@ -16,7 +16,33 @@ class MainViewModel: ViewModel() {
     var repo = Repository(GameAPI)
     val gameRepo = repo.games
 
+    private val _gameSFav = MutableLiveData<MutableList<Game>>()
+    val gamesFav : LiveData<MutableList<Game>>
+    get() = _gameSFav
 
+    fun inFav(game: Game):Boolean{
+        for(games in _gameSFav.value!!) {
+            if (games.id == game.id){
+                return true
+            }
+        }
+        return false
+    }
+
+    fun addFav(game: Game){
+        if (!inFav(game)) {
+            _gameSFav.value!!.add(game)
+        }
+        _gameSFav.value = _gameSFav.value
+    }
+
+    fun deleteFav(game: Game){
+        for (i in _gameSFav.value!!.indices)
+            if(game.id == _gameSFav.value!![i].id){
+                _gameSFav.value!!.removeAt(i)
+            }
+        _gameSFav.value = _gameSFav.value
+    }
 
 
     init {
@@ -30,5 +56,14 @@ class MainViewModel: ViewModel() {
         }
     }
 
-     }
+    fun search(term: String){
+        viewModelScope.launch {
+            try {
+                repo.search(term)
+            }catch (e: Exception){
+                Log.e("Game suche", "error loading Game ${e}")
+            }
+        }
+    }
+}
 
