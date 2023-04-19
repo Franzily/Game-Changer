@@ -7,14 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.net.toUri
-import androidx.navigation.Navigation.findNavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.jantzen.example.gamerelease.FragmentUebersichtDirections
 import com.jantzen.example.gamerelease.R
 import com.jantzen.example.gamerelease.data.model.Game
 
-class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ViewHolder>() {
+class FilteredGamesAdapter: RecyclerView.Adapter<FilteredGamesAdapter.ViewHolder>() {
 
     private var dataset = listOf<Game>()
 
@@ -32,13 +32,13 @@ class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ViewH
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_uebersicht, parent, false)
+            .inflate(R.layout.item_entdecken, parent, false)
         return ViewHolder(adapterLayout)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val game = dataset[position]
         holder.cardviewUebersicht.setOnClickListener {
-            findNavController(it).navigate(FragmentUebersichtDirections.actionFragmentUebersichtToFragmentGame(game))
+            Navigation.findNavController(it).navigate(FragmentUebersichtDirections.actionFragmentUebersichtToFragmentGame(game))
         }
 
         try {
@@ -71,7 +71,7 @@ class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ViewH
             //TODO platzhalter einfügen
         }
     }
-        override fun getItemCount(): Int {
-            return dataset.size
-        }
+    override fun getItemCount(): Int {
+        return dataset.size
     }
+}

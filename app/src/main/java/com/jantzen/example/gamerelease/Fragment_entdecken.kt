@@ -20,26 +20,12 @@ import com.jantzen.example.gamerelease.databinding.FragmentUebersichtBinding
 
 class Fragment_entdecken : Fragment() {
     private lateinit var binding: FragmentEntdeckenBinding
-    private val viewModel : MainViewModel by activityViewModels()
+    private val viewModel: MainViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val cardviewPlatform: CardView = view.findViewById(R.id.cardView_platform_entdecken)
         val cardviewYear: CardView = view.findViewById(R.id.cardview_year)
-        //val name = requireArguments().getString("name")
-        binding.backbuttonEntdecken.setOnClickListener {
-            Navigation.findNavController(view).navigateUp()
-        }
 
-        binding.cardViewPlatformEntdecken.setOnClickListener {
-            Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragment2())
-        }
-
-        binding.cardviewYear.setOnClickListener {
-            Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragmentKategorie())
-        }
-        binding.cardviewYear.setOnClickListener {
-            Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragmentKategorie())
-        }
 
         val adapter = GameAdapterEntdecken()
         binding.RecyclerViewEntdecken.adapter = adapter
@@ -47,10 +33,41 @@ class Fragment_entdecken : Fragment() {
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.RecyclerViewEntdecken)
 
-        viewModel.repo.games.observe(viewLifecycleOwner) {
+
+        binding.backbuttonEntdecken.setOnClickListener {
+            Navigation.findNavController(view).navigateUp()
+        }
+
+        binding.cardViewPlatformEntdecken.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragment2())
+        }
+
+        binding.cardviewYear.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragmentKategorie())
+        }
+
+
+        viewModel.repo.filteredGames.observe(viewLifecycleOwner) {
             Log.d("observer", "games erhalten entdecken ${viewModel.repo.games.value!!.size}")
             adapter.submitList(it)
+            Log.d("observer", "games erhalten entdecken ")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val filter = requireArguments().getString("filter")
+        val key = requireArguments().getString("keyword")
+
+        try {
+            Log.d("entdecken", "$filter $key")
+        } catch (e: Exception) {
+            Log.e("entdecken", "kein filter")
+        }
+
+        viewModel.loadFilteredGames(filter!!, key!!)
     }
 
     override fun onCreateView(

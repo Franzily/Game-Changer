@@ -28,6 +28,7 @@ class GameAdapterEntdecken : RecyclerView.Adapter<GameAdapterEntdecken.ViewHolde
     }
     fun submitList(newList: List<Game>) {
         dataset = newList
+        println("adapter")
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,7 +40,7 @@ class GameAdapterEntdecken : RecyclerView.Adapter<GameAdapterEntdecken.ViewHolde
         val game = dataset[position]
 
         holder.cardviewEntdecken.setOnClickListener {
-            Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragmentGame(game.name!!))
+            Navigation.findNavController(it).navigate(Fragment_entdeckenDirections.actionFragmentEntdeckenToFragmentGame(game))
         }
         try {
             holder.name.text = game.name

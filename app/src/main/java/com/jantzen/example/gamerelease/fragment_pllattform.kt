@@ -23,19 +23,19 @@ class fragment_pllattform : Fragment() {
 
         val games = viewModel.gameRepo.value
         binding.cardviewPlaystation.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(fragment_pllattformDirections.actionFragmentPlatformToFragmentEntdecken("platform", "playstation"))
         }
 
         binding.cardviewPc.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(fragment_pllattformDirections.actionFragmentPlatformToFragmentEntdecken("platform", "pc"))
         }
 
         binding.cardviewNintendo.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(fragment_pllattformDirections.actionFragmentPlatformToFragmentEntdecken("platform", "nintendo"))
         }
 
         binding.cardviewXbox.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(fragment_pllattformDirections.actionFragmentPlatformToFragmentEntdecken("platform", "xbox"))
         }
 
     }

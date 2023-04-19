@@ -19,15 +19,20 @@ class Fragment_favorite : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //val name = requireArguments().getString("name")
+        if (viewModel.gamesFav.value != null) {
 
-        val adapter = GameAdapterFavoriten(viewModel.gamesFav.value)
-        binding.RecyclerViewFav.adapter = adapter
-        binding.imageButtonBackFav.setOnClickListener {
-            Navigation.findNavController(view).navigateUp()
+            val adapter = GameAdapterFavoriten(viewModel.gamesFav.value!!)
+            binding.RecyclerViewFav.adapter = adapter
+            viewModel.gamesFav.observe(viewLifecycleOwner) {
+                adapter.submitList(it)}
+        }else{
         }
-       //TODO observer favoritenliste
 
-    }
+            binding.imageButtonBackFav.setOnClickListener {
+                Navigation.findNavController(view).navigateUp()
+            }
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

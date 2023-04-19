@@ -24,12 +24,20 @@
         android:id="@+id/fragment_Platform"
         android:name="com.jantzen.example.gamerelease.fragment_pllattform"
         android:label="fragment_fragment2"
-        tools:layout="@layout/fragment_plattform" />
+        tools:layout="@layout/fragment_plattform" >
+        <action
+            android:id="@+id/action_fragment_Platform_to_fragment_entdecken"
+            app:destination="@id/fragment_entdecken" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_Year"
         android:name="com.jantzen.example.gamerelease.Fragment_Year"
         android:label="fragment__kategorie"
-        tools:layout="@layout/fragment__year" />
+        tools:layout="@layout/fragment__year" >
+        <action
+            android:id="@+id/action_fragment_Year_to_fragment_entdecken"
+            app:destination="@id/fragment_entdecken" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_Splash"
         android:name="com.jantzen.example.gamerelease.Fragment_Splash"
@@ -52,7 +60,11 @@
         android:id="@+id/fragment_favorite"
         android:name="com.jantzen.example.gamerelease.Fragment_favorite"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_fragment_favorite_to_fragment_game"
+            app:destination="@id/fragment_game" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_entdecken"
         android:name="com.jantzen.example.gamerelease.Fragment_entdecken"
@@ -67,5 +79,13 @@
         <action
             android:id="@+id/action_fragment_entdecken_to_fragment_game"
             app:destination="@id/fragment_game" />
+        <argument
+            android:name="filter"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="keyword"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
 </navigation>

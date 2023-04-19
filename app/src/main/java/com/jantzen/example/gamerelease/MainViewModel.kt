@@ -16,38 +16,52 @@ class MainViewModel: ViewModel() {
     var repo = Repository(GameAPI)
     val gameRepo = repo.games
 
-    private val _gameSFav = MutableLiveData<MutableList<Game>>()
+    private val _gameSFav = MutableLiveData<MutableList<Game>>(mutableListOf())
     val gamesFav : LiveData<MutableList<Game>>
     get() = _gameSFav
 
-    fun inFav(game: Game):Boolean{
-        for(games in _gameSFav.value!!) {
-            if (games.id == game.id){
-                return true
+    fun inFav(game: Game):Boolean {
+        try {
+
+
+            for (games in _gameSFav.value!!) {
+                if (games.id == game.id) {
+                    return true
+                }
             }
+
+        }catch (e: Exception){
+            return false
         }
         return false
     }
 
     fun addFav(game: Game){
+        println(game)
         if (!inFav(game)) {
-            _gameSFav.value!!.add(game)
+            _gameSFav.value?.add(game)
+            println("fav hinzugefügt")
+            println(_gameSFav.value)
+
         }
         _gameSFav.value = _gameSFav.value
     }
 
-    fun deleteFav(game: Game){
-        for (i in _gameSFav.value!!.indices)
-            if(game.id == _gameSFav.value!![i].id){
-                _gameSFav.value!!.removeAt(i)
-            }
-        _gameSFav.value = _gameSFav.value
+    fun deleteFav(game: Game) {
+        try {
+            for (i in _gameSFav.value!!.indices)
+                if (game.id == _gameSFav.value!![i].id) {
+                    _gameSFav.value!!.removeAt(i)
+                }
+            _gameSFav.value = _gameSFav.value
+        } catch (e:Exception){
+            println("keine Favoriten")
+        }
     }
-
-
     init {
         Log.d(TAG, "init")
         loadGame()
+
     }
 
     fun loadGame() {
@@ -56,14 +70,26 @@ class MainViewModel: ViewModel() {
         }
     }
 
-    fun search(term: String){
+    fun loadFilteredGames(filter: String, keyWord: String){
         viewModelScope.launch {
-            try {
-                repo.search(term)
-            }catch (e: Exception){
-                Log.e("Game suche", "error loading Game ${e}")
-            }
+            repo.getFilteredGames(filter, keyWord)
         }
     }
-}
+
+    fun loadFilteredGamesYear(filter: String, keyWord: String){
+        viewModelScope.launch {
+            repo.getFilteredGamesYear(filter, keyWord)
+        }
+    }
+
+   // fun search(term: String){
+       // viewModelScope.launch {
+         //   try {
+          //      repo.search(term)
+          //  }catch (e: Exception){
+           //     Log.e("Game suche", "error loading Game ${e}")
+            }
+       // }
+    //}
+//}
 

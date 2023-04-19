@@ -31,11 +31,11 @@ class Fragment_game : Fragment() {
          currentGame = requireArguments().getParcelable<Game>("game")!!
 
         if (currentGame != null){
-                    binding.gameNameText.text = currentGame!!.name
-                    binding.gameDateText.text = currentGame!!.expected_release_year.toString()
-                    binding.gameDescriptionText.text = currentGame!!.desk
-                    binding.gamePlattformText.text = currentGame!!.platforms.toString()
-                    gameIsFav = viewModel.inFav(currentGame!!)
+                    binding.gameNameText.text = currentGame.name
+                    binding.gameDateText.text = currentGame.expected_release_year.toString()
+                    binding.gameDescriptionText.text = currentGame.description
+                    binding.gamePlattformText.text = currentGame.platforms.toString()
+                    gameIsFav = viewModel.inFav(currentGame)
                     setFav()
                     binding.imageButtonFav.setOnClickListener {
                         gameIsFav = !gameIsFav
@@ -43,21 +43,21 @@ class Fragment_game : Fragment() {
 
                     }
                     try {
-                        if (currentGame!!.image!!.medium_url != null) {
-                            val imageURI = currentGame!!.image!!.medium_url!!.toUri().buildUpon().scheme("https").build()
+                        if (currentGame.image!!.medium_url != null) {
+                            val imageURI = currentGame.image!!.medium_url!!.toUri().buildUpon().scheme("https").build()
                             binding.gameImage.load(imageURI)
 
-                        } else if (currentGame!!.image!!.super_url != null) {
-                            val imageURI = currentGame!!.image!!.super_url!!.toUri().buildUpon().scheme("https").build()
+                        } else if (currentGame.image!!.super_url != null) {
+                            val imageURI = currentGame.image!!.super_url!!.toUri().buildUpon().scheme("https").build()
                             binding.gameImage.load(imageURI)
 
-                        } else if (currentGame!!.image!!.small_url != null) {
-                            val imageURI = currentGame!!.image!!.small_url!!.toUri().buildUpon().scheme("https").build()
+                        } else if (currentGame.image!!.small_url != null) {
+                            val imageURI = currentGame.image!!.small_url!!.toUri().buildUpon().scheme("https").build()
                             binding.gameImage.load(imageURI)
 
 
-                        } else if (currentGame!!.image!!.original_url != null) {
-                            val imageURI = currentGame!!.image!!.original_url!!.toUri().buildUpon().scheme("https").build()
+                        } else if (currentGame.image!!.original_url != null) {
+                            val imageURI = currentGame.image!!.original_url!!.toUri().buildUpon().scheme("https").build()
                             binding.gameImage.load(imageURI)
                         }
                     }catch (e: Exception){
@@ -81,10 +81,7 @@ class Fragment_game : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentGameBinding.inflate(layoutInflater)
         return binding.root
-
-
     }
 }

@@ -9,5 +9,5 @@ data class Game (
     val name: String?,
     val platforms: List<Platform>?,
     val image: Image?,
-    val desk: String?,
+    val description: String?,
     val expected_release_year: Int?):Parcelable

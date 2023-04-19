@@ -1,6 +1,7 @@
 package com.jantzen.example.gamerelease
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,28 +24,29 @@ class Fragment_Year : Fragment() {
         }
 
         binding.cardView2025.setOnClickListener {
-
+            Log.d("onClick", "year 2025")
+                Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2025"))
         }
         binding.cardView2024.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2023"))
         }
         binding.cardView2023.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2023"))
         }
         binding.cardView2022.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2022"))
         }
         binding.cardView2021.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2021"))
         }
         binding.cardView2020.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2020"))
         }
         binding.cardView2019.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2019"))
         }
         binding.cardView2018.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2018"))
         }
     }
 
