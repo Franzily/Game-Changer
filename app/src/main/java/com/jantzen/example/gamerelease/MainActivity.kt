@@ -2,6 +2,7 @@ package com.jantzen.example.gamerelease
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -22,7 +23,17 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationsView.setupWithNavController(navController)
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.fragment_Splash) {
+
+                bottomNavigationsView.visibility = View.GONE
+            } else {
+
+                bottomNavigationsView.visibility = View.VISIBLE
+            }
+        }
     }
+
     private fun replaceFragment(fragment: Fragment){
         if(fragment != null){
             val transaction = supportFragmentManager.beginTransaction()

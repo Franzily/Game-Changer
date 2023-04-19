@@ -28,7 +28,7 @@ class Fragment_Year : Fragment() {
                 Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2025"))
         }
         binding.cardView2024.setOnClickListener {
-            Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2023"))
+            Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2024"))
         }
         binding.cardView2023.setOnClickListener {
             Navigation.findNavController(it).navigate(Fragment_YearDirections.actionFragmentYearToFragmentEntdecken("year", "2023"))

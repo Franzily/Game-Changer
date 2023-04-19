@@ -31,6 +31,7 @@ class FragmentUebersicht : Fragment() {
             Log.d("observer", "games erhalten ${viewModel.repo.games.value!!.size}")
             adapter.submitList(it)
         }
+
     }
 
     override fun onCreateView(

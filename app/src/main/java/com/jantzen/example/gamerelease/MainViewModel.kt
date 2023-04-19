@@ -70,6 +70,12 @@ class MainViewModel: ViewModel() {
         }
     }
 
+    fun loadFullGamesList(){
+        viewModelScope.launch {
+            repo.getFullList()
+        }
+    }
+
     fun loadFilteredGames(filter: String, keyWord: String){
         viewModelScope.launch {
             repo.getFilteredGames(filter, keyWord)
@@ -82,14 +88,14 @@ class MainViewModel: ViewModel() {
         }
     }
 
-   // fun search(term: String){
-       // viewModelScope.launch {
-         //   try {
-          //      repo.search(term)
-          //  }catch (e: Exception){
-           //     Log.e("Game suche", "error loading Game ${e}")
+    fun search(term: String){
+        viewModelScope.launch {
+            try {
+                repo.search(term)
+            }catch (e: Exception){
+                Log.e("Game suche", "error loading Game ${e}")
             }
-       // }
-    //}
-//}
+        }
+    }
+}
 

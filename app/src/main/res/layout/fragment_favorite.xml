@@ -42,17 +42,6 @@
         app:layout_constraintTop_toTopOf="@+id/materialToolbar_fav" />
 
     <ImageButton
-        android:id="@+id/imageButton_search_fav"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/search"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton_menu_fav"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton_menu_fav"
-        app:layout_constraintTop_toTopOf="@+id/materialToolbar_fav" />
-
-    <ImageButton
         android:id="@+id/imageButton_back_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

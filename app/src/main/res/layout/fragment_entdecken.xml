@@ -69,6 +69,25 @@
         app:title="Entdecken"
         app:titleCentered="true" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+
+        app:boxBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton_search_entdecken"
+        app:layout_constraintStart_toEndOf="@+id/backbutton_entdecken"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="suche" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <ImageButton
         android:id="@+id/imageButton_menu_entdecken"
         android:layout_width="wrap_content"

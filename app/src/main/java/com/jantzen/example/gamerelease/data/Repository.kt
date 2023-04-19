@@ -16,14 +16,33 @@ class Repository (private val gameApi: GameAPI) {
     val filteredGames: LiveData<MutableList<Game>>
     get() = _filteredGames
 
-    //suspend fun search(term: String){
-     //   _games.value = gameApi.retrofitService.getGame(term, "name").results
-    //}
+    private var searchedList = mutableListOf<Game>()
+    private var fullList = mutableListOf<Game>()
+
+    suspend fun search(term: String) {
+        searchedList.clear()
+        for (games in games.value!!) {
+            println(games.name)
+            println(term)
+            if (games.name!!.trim().lowercase().contains(term.trim().lowercase())){
+                println(games.name)
+                searchedList.add(games)
+            }
+        }
+        println(searchedList)
+        _filteredGames.value = searchedList
+    }
+
+    suspend fun getFullList(){
+        _games.value = fullList.toList()
+        _filteredGames.value = fullList
+    }
     suspend fun getGames(filter: String){
        try {
 
            val response = gameApi.retrofitService.getGame()
            _games.value = response.results!!
+           fullList.addAll(response.results)
            println(response.results)
        } catch (e: Exception){
            Log.e("repository getgames", "error api ${e}")
@@ -33,8 +52,9 @@ class Repository (private val gameApi: GameAPI) {
     }
 
     suspend fun getFilteredGames(filter: String, keyWord: String){
-        //_filteredGames.value!!.clear()
+        _filteredGames.value!!.clear()
         val response = games.value!! //gameApi.retrofitService.getGame()
+        println(response)
         if (filter == "platform"){
             for (games in response){
                 if (games.platforms != null) {
@@ -45,10 +65,17 @@ class Repository (private val gameApi: GameAPI) {
                     }
                 }
             }
-        }else if (filter == "year"){
+        }
+        else if (filter == "year"){
             for (games in response){
-                if (games.expected_release_year.toString() == keyWord){
+                if (keyWord.toInt() == 2025){
+                    if (games.expected_release_year!! >= keyWord.toInt()){
+                        _filteredGames.value!!.add(games)
+                    }
+                }
+                else if (games.expected_release_year == keyWord.toInt()){
                     _filteredGames.value!!.add(games)
+
                 }
             }
         }

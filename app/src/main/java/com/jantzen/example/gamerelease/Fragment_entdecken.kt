@@ -54,21 +54,44 @@ class Fragment_entdecken : Fragment() {
             adapter.submitList(it)
             Log.d("observer", "games erhalten entdecken ")
         }
+        binding.imageButtonSearchEntdecken.setOnClickListener {
+            if (binding.textInputLayoutSearch.visibility==View.GONE){
+                binding.textInputLayoutSearch.visibility = View.VISIBLE
+            }else {
+                binding.textInputLayoutSearch.visibility = View.GONE
+                var search = binding.searchInput.text
+                println(search)
+                viewModel.search(search.toString())
+            }
+
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        val filter = requireArguments().getString("filter")
-        val key = requireArguments().getString("keyword")
+        println("ist im RESUME")
+        var filter = requireArguments().getString("filter")
+        var key = requireArguments().getString("keyword")
+        println(filter)
+        println(key)
+        if (filter != null) {
+            if (filter.isNotEmpty() or filter.isNotBlank()) {
+                try {
+                    Log.d("entdecken", "$filter $key")
+                } catch (e: Exception) {
+                    Log.e("entdecken", "kein filter")
+                }
 
-        try {
-            Log.d("entdecken", "$filter $key")
-        } catch (e: Exception) {
-            Log.e("entdecken", "kein filter")
+                viewModel.loadFilteredGames(filter!!, key!!)
+                this.arguments?.clear()
+            }
+            } else {
+                println("reload Game")
+
+                viewModel.loadFullGamesList()
+            }
         }
 
-        viewModel.loadFilteredGames(filter!!, key!!)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
