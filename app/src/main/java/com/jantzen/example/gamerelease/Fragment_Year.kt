@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import com.jantzen.example.gamerelease.databinding.FragmentGameBinding
 import com.jantzen.example.gamerelease.databinding.FragmentYearBinding
 
 
@@ -54,7 +53,6 @@ class Fragment_Year : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentYearBinding.inflate(layoutInflater)
         return binding.root
     }

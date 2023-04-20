@@ -16,45 +16,42 @@ class Repository (private val gameApi: GameAPI) {
     val filteredGames: LiveData<MutableList<Game>>
     get() = _filteredGames
 
+    private val _fullList = MutableLiveData<MutableList<Game>>(mutableListOf())
+    val fullList: LiveData<MutableList<Game>>
+    get() = _fullList
+
     private var searchedList = mutableListOf<Game>()
-    private var fullList = mutableListOf<Game>()
 
     suspend fun search(term: String) {
         searchedList.clear()
         for (games in games.value!!) {
-            println(games.name)
-            println(term)
             if (games.name!!.trim().lowercase().contains(term.trim().lowercase())){
-                println(games.name)
                 searchedList.add(games)
             }
         }
-        println(searchedList)
         _filteredGames.value = searchedList
     }
 
     suspend fun getFullList(){
-        _games.value = fullList.toList()
-        _filteredGames.value = fullList
+        _filteredGames.value!!.clear()
+        _games.value = _fullList.value
+        _filteredGames.value!!.addAll(_games.value!!)
     }
     suspend fun getGames(filter: String){
+        _filteredGames.value!!.clear()
        try {
-
            val response = gameApi.retrofitService.getGame()
            _games.value = response.results!!
-           fullList.addAll(response.results)
-           println(response.results)
+           _fullList.value!!.addAll(response.results)
+           _filteredGames.value!!.addAll(response.results)
        } catch (e: Exception){
            Log.e("repository getgames", "error api ${e}")
        }
-
-
     }
 
     suspend fun getFilteredGames(filter: String, keyWord: String){
         _filteredGames.value!!.clear()
-        val response = games.value!! //gameApi.retrofitService.getGame()
-        println(response)
+        val response = games.value!!
         if (filter == "platform"){
             for (games in response){
                 if (games.platforms != null) {
@@ -75,7 +72,6 @@ class Repository (private val gameApi: GameAPI) {
                 }
                 else if (games.expected_release_year == keyWord.toInt()){
                     _filteredGames.value!!.add(games)
-
                 }
             }
         }
@@ -89,36 +85,4 @@ class Repository (private val gameApi: GameAPI) {
         }
         _filteredGames.value = filteredGames.value
     }
-
-// erstmal nicht benutzen
-    suspend fun getFilteredGamesYear(filter: String, keyWord: String){
-        //_filteredGames.value!!.clear()
-        val response = games.value!!//gameApi.retrofitService.getGame()
-        println("filter")
-        if (filter == "year"){
-            for (games in response){
-                if (games.expected_release_year.toString() == keyWord){
-                    _filteredGames.value!!.add(games)
-                }
-
-
-            }
-            println("filteredGame")
-            println(_filteredGames.value)
-
-
-        }else {
-            try {
-                _filteredGames.value = response.toMutableList()
-                println(response)
-            } catch (e: Exception){
-                Log.e("repository getgames", "error api ${e}")
-            }
-        }
-        _filteredGames.value = filteredGames.value
-    }
-
-
-
-
 }

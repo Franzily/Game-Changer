@@ -20,15 +20,11 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationsView = this.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         val navController = this.findNavController(R.id.nav_host_fragment)
-
         bottomNavigationsView.setupWithNavController(navController)
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id == R.id.fragment_Splash) {
-
                 bottomNavigationsView.visibility = View.GONE
             } else {
-
                 bottomNavigationsView.visibility = View.VISIBLE
             }
         }

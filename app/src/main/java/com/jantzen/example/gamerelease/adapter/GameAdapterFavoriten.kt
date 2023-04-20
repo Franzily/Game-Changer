@@ -3,7 +3,6 @@ package com.jantzen.example.gamerelease.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -11,9 +10,6 @@ import androidx.core.net.toUri
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.google.android.material.appbar.MaterialToolbar
-import com.jantzen.example.gamerelease.FragmentUebersichtDirections
-import com.jantzen.example.gamerelease.Fragment_favorite
 import com.jantzen.example.gamerelease.Fragment_favoriteDirections
 import com.jantzen.example.gamerelease.R
 import com.jantzen.example.gamerelease.data.model.Game
@@ -25,10 +21,7 @@ class GameAdapterFavoriten(private var dataset: MutableList<Game>) : RecyclerVie
         val image: ImageView = view.findViewById(R.id.imageView_game_fav)
         val name: TextView = view.findViewById(R.id.game_name_favorite)
         val date: TextView = view.findViewById(R.id.game_date_favorite)
-
-        //val fav: ImageButton = view.findViewById(R.id.imageButton_fav)
         val cardView: CardView = view.findViewById(R.id.cardview_fav)
-        //val toolbar: MaterialToolbar = view.findViewById(R.id.materialToolbar_fav)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -74,7 +67,6 @@ class GameAdapterFavoriten(private var dataset: MutableList<Game>) : RecyclerVie
                     holder.image.load(imageURI)
                 }
             } catch (e: Exception) {
-                //TODO platzhalter einfügen
             }
         }
         override fun getItemCount(): Int {

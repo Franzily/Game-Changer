@@ -23,7 +23,6 @@ class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ViewH
         val image: ImageView = view.findViewById(R.id.game_image_uebersicht)
         val name: TextView = view.findViewById(R.id.game_name_uebersicht)
         val date: TextView = view.findViewById(R.id.game_date_uebersicht)
-        //val toolbar: MaterialToolbar = view.findViewById(R.id.materialToolbar_uebersicht)
         val cardviewUebersicht: CardView = view.findViewById(R.id.materialCardUebersicht)
     }
     fun submitList(newList: List<Game>) {
@@ -68,7 +67,6 @@ class GameAdapterUebersicht() : RecyclerView.Adapter<GameAdapterUebersicht.ViewH
 
             }
         }catch (e: Exception){
-            //TODO platzhalter einfügen
         }
     }
         override fun getItemCount(): Int {

@@ -293,29 +293,6 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <ImageButton
-        android:id="@+id/imageButton_year"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="32dp"
-        android:src="@drawable/bg_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cornerRadius="15dp"/>
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="weiter"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton_year"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton_year"
-        app:layout_constraintStart_toStartOf="@+id/imageButton_year"
-        app:layout_constraintTop_toTopOf="@+id/imageButton_year" />
-
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"

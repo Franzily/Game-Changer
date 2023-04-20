@@ -5,15 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import coil.load
 import coil.size.Scale
 import com.jantzen.example.gamerelease.data.model.Game
-import com.jantzen.example.gamerelease.databinding.FragmentFavoriteBinding
 import com.jantzen.example.gamerelease.databinding.FragmentGameBinding
-import com.jantzen.example.gamerelease.databinding.FragmentUebersichtBinding
 
 
 class Fragment_game : Fragment() {
@@ -34,19 +33,21 @@ class Fragment_game : Fragment() {
         if (currentGame != null){
                     binding.gameNameText.text = currentGame.name
                     binding.gameDateText.text = currentGame.expected_release_year.toString()
-            if (currentGame.description.isNullOrBlank()){
+            if (currentGame.desk.isNullOrBlank()){
                 binding.gameDescriptionText.text = "Beschreibung folgt"
             }else{
-                binding.gameDescriptionText.text = currentGame.description
+                binding.gameDescriptionText.text = currentGame.desk
             }
-
-                    binding.gamePlattformText.text = currentGame.platforms.toString()
+            if(currentGame.platforms.isNullOrEmpty()){
+                binding.gamePlattformText.text = "keine Plattform angegeben"
+            }else{
+                binding.gamePlattformText.text = currentGame.platforms.toString()
+            }
                     gameIsFav = viewModel.inFav(currentGame)
                     setFav()
                     binding.imageButtonFav.setOnClickListener {
                         gameIsFav = !gameIsFav
                         setFav()
-
                     }
                     try {
                         if (currentGame.image!!.medium_url != null) {
@@ -67,7 +68,6 @@ class Fragment_game : Fragment() {
                                 scale(Scale.FILL)
                             }
 
-
                         } else if (currentGame.image!!.original_url != null) {
                             val imageURI = currentGame.image!!.original_url!!.toUri().buildUpon().scheme("https").build()
                             binding.gameImage.load(imageURI){
@@ -75,7 +75,6 @@ class Fragment_game : Fragment() {
                             }
                         }
                     }catch (e: Exception){
-                        //TODO platzhalter einfügen
                     }
                 }
             }
@@ -90,7 +89,6 @@ class Fragment_game : Fragment() {
             viewModel.deleteFav(currentGame!!)
         }
 }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

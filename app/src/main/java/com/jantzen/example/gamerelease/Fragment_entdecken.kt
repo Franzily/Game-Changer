@@ -1,21 +1,20 @@
 package com.jantzen.example.gamerelease
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.jantzen.example.gamerelease.adapter.GameAdapterEntdecken
-import com.jantzen.example.gamerelease.adapter.GameAdapterFavoriten
-import com.jantzen.example.gamerelease.adapter.GameAdapterUebersicht
 import com.jantzen.example.gamerelease.databinding.FragmentEntdeckenBinding
-import com.jantzen.example.gamerelease.databinding.FragmentUebersichtBinding
 
 
 class Fragment_entdecken : Fragment() {
@@ -59,21 +58,23 @@ class Fragment_entdecken : Fragment() {
                 binding.textInputLayoutSearch.visibility = View.VISIBLE
             }else {
                 binding.textInputLayoutSearch.visibility = View.GONE
+                hideKeyboard()
                 var search = binding.searchInput.text
-                println(search)
                 viewModel.search(search.toString())
             }
-
         }
     }
-
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
     override fun onResume() {
         super.onResume()
-        println("ist im RESUME")
         var filter = requireArguments().getString("filter")
         var key = requireArguments().getString("keyword")
-        println(filter)
-        println(key)
         if (filter != null) {
             if (filter.isNotEmpty() or filter.isNotBlank()) {
                 try {
@@ -81,15 +82,15 @@ class Fragment_entdecken : Fragment() {
                 } catch (e: Exception) {
                     Log.e("entdecken", "kein filter")
                 }
-
                 viewModel.loadFilteredGames(filter!!, key!!)
                 this.arguments?.clear()
             }
             } else {
-                println("reload Game")
-
                 viewModel.loadFullGamesList()
+            Log.d("observer", "filteredGames erhalten entdecken ${viewModel.repo.filteredGames.value!!.size}")
+            Log.d("observer", "fullGames erhalten entdecken ${viewModel.repo.fullList.value!!.size}")
             }
+
         }
 
 
@@ -97,7 +98,6 @@ class Fragment_entdecken : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentEntdeckenBinding.inflate(layoutInflater)
         return binding.root
     }

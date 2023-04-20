@@ -45,7 +45,9 @@
         tools:layout="@layout/fragment__splash" >
         <action
             android:id="@+id/action_fragment_Splash_to_fragment_uebersicht"
-            app:destination="@id/fragment_uebersicht" />
+            app:destination="@id/fragment_uebersicht"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/fragment_game"
@@ -64,6 +66,9 @@
         <action
             android:id="@+id/action_fragment_favorite_to_fragment_game"
             app:destination="@id/fragment_game" />
+        <action
+            android:id="@+id/action_fragment_favorite_to_fragment_uebersicht"
+            app:destination="@id/fragment_uebersicht" />
     </fragment>
     <fragment
         android:id="@+id/fragment_entdecken"

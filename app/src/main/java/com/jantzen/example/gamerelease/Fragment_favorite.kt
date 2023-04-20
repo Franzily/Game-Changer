@@ -18,7 +18,6 @@ class Fragment_favorite : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val name = requireArguments().getString("name")
         if (viewModel.gamesFav.value != null) {
 
             val adapter = GameAdapterFavoriten(viewModel.gamesFav.value!!)
@@ -37,8 +36,6 @@ class Fragment_favorite : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        // Inflate the layout for this fragment
         binding = FragmentFavoriteBinding.inflate(layoutInflater)
         return binding.root
     }

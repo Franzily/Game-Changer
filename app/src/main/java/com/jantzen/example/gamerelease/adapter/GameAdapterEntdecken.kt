@@ -71,7 +71,6 @@ class GameAdapterEntdecken : RecyclerView.Adapter<GameAdapterEntdecken.ViewHolde
                 holder.image.setImageResource(R.drawable.bg_color)
             }
         }catch (e: Exception){
-            //TODO platzhalter einfügen
         }
     }
     override fun getItemCount(): Int {

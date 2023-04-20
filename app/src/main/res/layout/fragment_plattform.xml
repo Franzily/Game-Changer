@@ -149,28 +149,6 @@
             android:textColor="#000000" />
     </androidx.cardview.widget.CardView>
 
-    <ImageButton
-        android:id="@+id/imageButton_platform"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="32dp"
-        android:src="@drawable/bg_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="weiter"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton_platform"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton_platform"
-        app:layout_constraintStart_toStartOf="@+id/imageButton_platform"
-        app:layout_constraintTop_toTopOf="@+id/imageButton_platform" />
-
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"

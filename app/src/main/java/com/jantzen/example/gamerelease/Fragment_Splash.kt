@@ -9,9 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jantzen.example.gamerelease.databinding.FragmentSplashBinding
-import com.jantzen.example.gamerelease.databinding.FragmentUebersichtBinding
 
 
 class Fragment_Splash : Fragment() {
@@ -22,7 +20,7 @@ class Fragment_Splash : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         Handler(Looper.myLooper()!!).postDelayed({
-            findNavController().navigate(R.id.fragment_uebersicht)
+            findNavController().navigate(Fragment_SplashDirections.actionFragmentSplashToFragmentUebersicht())
         }, 5000)
     }
 
@@ -30,7 +28,6 @@ class Fragment_Splash : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         binding = FragmentSplashBinding.inflate(layoutInflater)
 

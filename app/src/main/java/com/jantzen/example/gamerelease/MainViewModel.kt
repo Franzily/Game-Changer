@@ -2,6 +2,7 @@ package com.jantzen.example.gamerelease
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,16 +21,14 @@ class MainViewModel: ViewModel() {
     val gamesFav : LiveData<MutableList<Game>>
     get() = _gameSFav
 
+
     fun inFav(game: Game):Boolean {
         try {
-
-
             for (games in _gameSFav.value!!) {
                 if (games.id == game.id) {
                     return true
                 }
             }
-
         }catch (e: Exception){
             return false
         }
@@ -37,12 +36,8 @@ class MainViewModel: ViewModel() {
     }
 
     fun addFav(game: Game){
-        println(game)
         if (!inFav(game)) {
             _gameSFav.value?.add(game)
-            println("fav hinzugefügt")
-            println(_gameSFav.value)
-
         }
         _gameSFav.value = _gameSFav.value
     }
@@ -61,7 +56,6 @@ class MainViewModel: ViewModel() {
     init {
         Log.d(TAG, "init")
         loadGame()
-
     }
 
     fun loadGame() {
@@ -79,12 +73,6 @@ class MainViewModel: ViewModel() {
     fun loadFilteredGames(filter: String, keyWord: String){
         viewModelScope.launch {
             repo.getFilteredGames(filter, keyWord)
-        }
-    }
-
-    fun loadFilteredGamesYear(filter: String, keyWord: String){
-        viewModelScope.launch {
-            repo.getFilteredGamesYear(filter, keyWord)
         }
     }
 

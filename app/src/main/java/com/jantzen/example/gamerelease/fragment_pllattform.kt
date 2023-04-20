@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import com.jantzen.example.gamerelease.databinding.FragmentGameBinding
 import com.jantzen.example.gamerelease.databinding.FragmentPlattformBinding
 
 
@@ -44,7 +43,6 @@ class fragment_pllattform : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentPlattformBinding.inflate(layoutInflater)
         return binding.root
     }

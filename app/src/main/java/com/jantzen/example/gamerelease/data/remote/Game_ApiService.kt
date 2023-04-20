@@ -36,11 +36,9 @@ private val retrofit = Retrofit.Builder()
 interface Game_ApiService {
     @GET("games")
     suspend fun getGame(
-       // @Query ("filter") filter: String,
         @Query ("api key") key: String = API_KEY,
         @Query ("format") format: String = FORMAT,
         @Query ("sort") sort: String = "original_release_date:desc"
-        //@Query ("limit") limit: Int = 100
     ): GamesResult
     @GET("search")
     suspend fun getSearchGame(

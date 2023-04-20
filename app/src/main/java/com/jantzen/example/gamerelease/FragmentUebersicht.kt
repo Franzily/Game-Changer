@@ -6,13 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.fragment.app.activityViewModels
-
 import androidx.recyclerview.widget.PagerSnapHelper
-
 import com.jantzen.example.gamerelease.adapter.GameAdapterUebersicht
-
 import com.jantzen.example.gamerelease.databinding.FragmentUebersichtBinding
 
 
@@ -31,7 +27,9 @@ class FragmentUebersicht : Fragment() {
             Log.d("observer", "games erhalten ${viewModel.repo.games.value!!.size}")
             adapter.submitList(it)
         }
-
+        viewModel.repo.fullList.observe(viewLifecycleOwner) {
+            Log.d("observer", "fulllist erhalten ${viewModel.repo.fullList.value!!.size}")
+        }
     }
 
     override fun onCreateView(
@@ -45,5 +43,9 @@ class FragmentUebersicht : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
 
+    }
+    override fun onResume() {
+        super.onResume()
+            viewModel.loadFullGamesList()
     }
 }
